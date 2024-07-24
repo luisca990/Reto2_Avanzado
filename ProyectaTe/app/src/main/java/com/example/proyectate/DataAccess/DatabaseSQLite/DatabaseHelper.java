@@ -20,7 +20,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 import com.example.proyectate.Models.Product;
 
 public class DatabaseHelper extends SQLiteOpenHelper {
-    private static final String DATABASE_NAME = "panappetit.db";
+    private static final String DATABASE_NAME = "proyectate.db";
     private static final int DATABASE_VERSION = 1;
 
     public DatabaseHelper(Context context) {
