@@ -19,6 +19,6 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "PanAppetit"
+rootProject.name = "ProyectaTe"
 include(":app")
  
