@@ -4,11 +4,11 @@ plugins {
 }
 
 android {
-    namespace = "com.example.panappetit"
+    namespace = "com.example.proyectate"
     compileSdk = 34
 
     defaultConfig {
-        applicationId = "com.example.panappetit"
+        applicationId = "com.example.proyectate"
         minSdk = 33
         targetSdk = 34
         versionCode = 1

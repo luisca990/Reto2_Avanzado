@@ -5,7 +5,7 @@
     app:startDestination="@id/splashFragment">
     <fragment
         android:id="@+id/splashFragment"
-        android:name="com.example.panappetit.Presentation.AccessAcount.SplashFragment"
+        android:name="com.example.proyectate.Presentation.AccessAcount.SplashFragment"
         android:label="SplashFragment" >
         <action
             android:id="@+id/action_splashFragment_to_loginFragment"
@@ -17,7 +17,7 @@
 
     <fragment
         android:id="@+id/loginFragment"
-        android:name="com.example.panappetit.Presentation.AccessAcount.Login.Implementations.LoginFragment"
+        android:name="com.example.proyectate.Presentation.AccessAcount.Login.Implementations.LoginFragment"
         android:label="LoginFragment">
         <action
             android:id="@+id/action_loginFragment_to_registerFragment"
@@ -29,12 +29,12 @@
 
     <fragment
         android:id="@+id/registerFragment"
-        android:name="com.example.panappetit.Presentation.AccessAcount.Register.Implementations.RegisterFragment"
+        android:name="com.example.proyectate.Presentation.AccessAcount.Register.Implementations.RegisterFragment"
         android:label="RegisterFragment"/>
 
     <fragment
         android:id="@+id/homeFragment"
-        android:name="com.example.panappetit.Presentation.Dash.Home.Implementations.HomeFragment"
+        android:name="com.example.proyectate.Presentation.Dash.Home.Implementations.HomeFragment"
         android:label="HomeFragment">
         <argument
             android:name="user"
@@ -62,11 +62,11 @@
 
     <fragment
         android:id="@+id/detailFragment"
-        android:name="com.example.panappetit.Presentation.Dash.ManageProduct.DetailAdmin.Implementations.DetailFragment"
+        android:name="com.example.proyectate.Presentation.Dash.ManageProduct.DetailAdmin.Implementations.DetailFragment"
         android:label="DetailFragment">
         <argument
             android:name="product"
-            app:argType="com.example.panappetit.Models.Product"
+            app:argType="com.example.proyectate.Models.Product"
             app:nullable="false" />
         <action
             android:id="@+id/action_detailFragment_to_addUpdateFragment"
@@ -78,11 +78,11 @@
 
     <fragment
         android:id="@+id/addUpdateFragment"
-        android:name="com.example.panappetit.Presentation.Dash.ManageProduct.AddUpdate.Implementations.AddUpdateFragment"
+        android:name="com.example.proyectate.Presentation.Dash.ManageProduct.AddUpdate.Implementations.AddUpdateFragment"
         android:label="AddUpdateFragment">
         <argument
             android:name="product"
-            app:argType="com.example.panappetit.Models.Product"
+            app:argType="com.example.proyectate.Models.Product"
             app:nullable="true"/>
         <action
             android:id="@+id/action_addUpdateFragment_to_detailFragment"
@@ -91,27 +91,27 @@
 
     <fragment
         android:id="@+id/detailClientFragment"
-        android:name="com.example.panappetit.Presentation.Dash.ManageProduct.DetailClient.Implementations.DetailClientFragment"
+        android:name="com.example.proyectate.Presentation.Dash.ManageProduct.DetailClient.Implementations.DetailClientFragment"
         android:label="DetailClientFragment">
         <argument
             android:name="product"
-            app:argType="com.example.panappetit.Models.Product"
+            app:argType="com.example.proyectate.Models.Product"
             app:nullable="false" />
     </fragment>
 
     <fragment
         android:id="@+id/shoppingCartFragment"
-        android:name="com.example.panappetit.Presentation.Dash.ManageProduct.Shopping.Implementations.ShoppingCartFragment"
+        android:name="com.example.proyectate.Presentation.Dash.ManageProduct.Shopping.Implementations.ShoppingCartFragment"
         android:label="ShoppingCartFragment">
         <argument
             android:name="pedido"
-            app:argType="com.example.panappetit.Models.Pedido"
+            app:argType="com.example.proyectate.Models.Pedido"
             app:nullable="false" />
     </fragment>
 
     <fragment
         android:id="@+id/historyFragment"
-        android:name="com.example.panappetit.Presentation.Dash.ManageProduct.History.HistoryFragment"
+        android:name="com.example.proyectate.Presentation.Dash.ManageProduct.History.HistoryFragment"
         android:label="HistoryFragment"/>
 
 </navigation>
