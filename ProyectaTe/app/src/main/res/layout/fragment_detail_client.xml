@@ -73,7 +73,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="200dp"
                     android:importantForAccessibility="no"
-                    android:src="@drawable/splash_pan_app" />
+                    android:src="@drawable/splash_image" />
             </androidx.cardview.widget.CardView>
 
             <TextView

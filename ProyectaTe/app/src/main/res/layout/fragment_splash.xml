@@ -12,7 +12,7 @@
         android:layout_width="match_parent"
         android:layout_height="@dimen/_400dp"
         android:importantForAccessibility="no"
-        android:src="@drawable/splash_pan_app"
+        android:src="@drawable/splash_image"
         android:layout_marginStart="@dimen/_8dp"
         android:layout_marginEnd="@dimen/_8dp"
         app:layout_constraintBottom_toBottomOf="parent"
