@@ -16,7 +16,8 @@
             android:id="@+id/iv_item_shopping"
             android:layout_width="120dp"
             android:layout_height="120dp"
-            android:src="@drawable/splash_pan_app"
+            android:importantForAccessibility="no"
+            android:src="@drawable/splash_image"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -67,6 +68,7 @@
             android:layout_height="@dimen/_56dp"
             android:layout_marginTop="1dp"
             android:foregroundGravity="center"
+            android:importantForAccessibility="no"
             android:src="@mipmap/ic_select_cart_purple"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -76,6 +78,7 @@
             android:layout_width="@dimen/_56dp"
             android:layout_height="@dimen/_56dp"
             android:foregroundGravity="center"
+            android:importantForAccessibility="no"
             android:src="@mipmap/ic_delete_cart"
             app:layout_constraintTop_toBottomOf="@id/iv_select_card"
             app:layout_constraintEnd_toEndOf="parent"

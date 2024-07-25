@@ -1,7 +1,7 @@
 package com.example.proyectate.Presentation.Dash.Home.Adapter;
 
-import com.example.proyectate.Models.Product;
+import com.example.proyectate.Models.Project;
 
 public interface OnItemClickListenerProduct {
-    void onItemClick(Product product);
+    void onItemClick(Project product);
 }

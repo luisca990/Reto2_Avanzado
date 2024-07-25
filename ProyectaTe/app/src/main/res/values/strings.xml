@@ -68,5 +68,7 @@
     <string name="history">Historial de Pedidos</string>
     <string name="cantidad_max">"La cantidad debe ser igual o menor a: "</string>
     <string name="multiple_liness">Your long text goes here. It will wrap into multiple lines automatically.</string>
+    <string name="text_default">Your long text goes here. It will wrap into multiple lines automatically.</string>
+    <string name="_0">0</string>
 
 </resources>
