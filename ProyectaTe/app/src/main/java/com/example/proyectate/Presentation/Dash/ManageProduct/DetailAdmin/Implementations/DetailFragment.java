@@ -15,9 +15,9 @@ import android.widget.Toast;
 import androidx.navigation.Navigation;
 
 import com.example.proyectate.Base.BaseFragment;
-import com.example.proyectate.DataAccess.DatabaseSQLite.Daos.ProductDao;
+import com.example.proyectate.DataAccess.DatabaseSQLite.Daos.ProjectDao;
 import com.example.proyectate.DataAccess.SharedPreferences.SessionManager;
-import com.example.proyectate.Models.Product;
+import com.example.proyectate.Models.Project;
 import com.example.proyectate.Presentation.Dash.ManageProduct.DetailAdmin.Interfaces.IDetailView;
 import com.example.proyectate.R;
 import com.example.proyectate.Utils.Constants;
@@ -27,11 +27,11 @@ import java.util.Objects;
 
 public class DetailFragment extends BaseFragment {
     private DetailPresenter presenter;
-    private Product product;
+    private Project product;
     private ImageView arrow, image;
     private TextView name, description, count, valor;
     private Button delete, update;
-    private ProductDao dao;
+    private ProjectDao dao;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -45,11 +45,11 @@ public class DetailFragment extends BaseFragment {
         delete = getCustomView().findViewById(R.id.btn_delete_section);
         update = getCustomView().findViewById(R.id.btn_update_section);
 
-        dao = new ProductDao(getContext());
+        dao = new ProjectDao(getContext());
         presenter = new DetailPresenter(new listenerPresenter(), dao);
 
         if (getArguments() != null) {
-            Product item = getArguments().getParcelable("product", Product.class);
+            Project item = getArguments().getParcelable(Constants.Tag.PROJECT, Project.class);
             if (item != null) {
                 this.product = item; // Show character details immediately
             }
@@ -62,7 +62,7 @@ public class DetailFragment extends BaseFragment {
         super.onResume();
         update.setOnClickListener(v->{
             Bundle bundle = new Bundle();
-            bundle.putParcelable("product", product);
+            bundle.putParcelable(Constants.Tag.PROJECT, product);
             Navigation.findNavController(requireView()).navigate(R.id.action_detailFragment_to_addUpdateFragment, bundle);
             Toast.makeText(getContext(), "update", Toast.LENGTH_SHORT).show();});
         delete.setOnClickListener(v->{
@@ -70,14 +70,7 @@ public class DetailFragment extends BaseFragment {
             presenter.deleteProduct(product);
         });
         arrow.setOnClickListener(v->{
-            SessionManager sessionManager = new SessionManager(requireContext());
-            Bundle bundle = new Bundle();
-            if ((Objects.equals(sessionManager.getUserEmail(), Constants.Tag.ADMIN))) {
-                bundle.putString(Constants.Tag.USER, "admin");
-            } else {
-                bundle.putString(Constants.Tag.USER, "client");
-            }
-            Navigation.findNavController(requireView()).navigate(R.id.action_detailFragment_to_homeFragment, bundle);
+            Navigation.findNavController(requireView()).navigate(R.id.action_detailFragment_to_homeFragment);
         });
         completeProductData();
     }
@@ -86,10 +79,10 @@ public class DetailFragment extends BaseFragment {
     private void completeProductData(){
         if (product != null){
             convertImageService(product.getImage(), image, 300);
-            name.setText(product.getNombre());
-            description.setText(product.getDescripcion());
-            count.setText(product.getCantidad().toString());
-            valor.setText(product.getPrecio().toString());
+            name.setText(product.getTitle());
+            description.setText(product.getDescription());
+            count.setText(product.getDateEnd().toString());
+            valor.setText(product.getDateInit().toString());
         }
     }
 

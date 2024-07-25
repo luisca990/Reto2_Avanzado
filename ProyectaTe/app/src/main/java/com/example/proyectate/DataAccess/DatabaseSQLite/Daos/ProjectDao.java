@@ -1,25 +1,22 @@
 package com.example.proyectate.DataAccess.DatabaseSQLite.Daos;
 
-import static com.example.proyectate.Utils.Constants.TABLE_PRODUCTS;
-
+import static com.example.proyectate.Utils.Constants.TABLE_PROJECTS;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
-
 import com.example.proyectate.DataAccess.DatabaseSQLite.DatabaseHelper;
-import com.example.proyectate.Models.Product;
-
+import com.example.proyectate.Models.Project;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ProductDao {
+public class ProjectDao {
     private SQLiteDatabase db; // Objeto para interactuar con la base de datos
     private final DatabaseHelper dbHelper; // Instancia de DatabaseHelper para crear y actualizar la base de datos
 
     // Constructor que recibe el contexto de la aplicación y crea una instancia de DatabaseHelper
-    public ProductDao(Context context) {
+    public ProjectDao(Context context) {
         dbHelper = new DatabaseHelper(context);
     }
 
@@ -33,52 +30,54 @@ public class ProductDao {
         dbHelper.close();
     }
 
-    public long insertProduct(Product product){
+    public long insertProduct(Project project){
         ContentValues values = new ContentValues(); // Objeto para almacenar los valores a insertar
-        values.put("nombre", product.getNombre()); // Inserción del nombre del producto
-        values.put("descripcion", product.getDescripcion()); // Inserción del descripcion del producto
-        values.put("precio", product.getPrecio()); // Inserción del precio del producto
-        values.put("cantidad_stock", product.getCantidad()); // Inserción del cantidad del producto
-        values.put("imagen", product.getImage()); // Inserción del imagen del producto
-        return db.insert(TABLE_PRODUCTS, null, values);
+        values.put("title", project.getTitle()); // Inserción del nombre del producto
+        values.put("description", project.getDescription()); // Inserción del descripcion del producto
+        values.put("date_init", project.getDateInit()); // Inserción del date inicial del producto
+        values.put("date_end", project.getDateEnd()); // Inserción del date final del producto
+        values.put("user_id", project.getUserId());  // Inserción del id del usuario
+        values.put("imagen", project.getImage()); // Inserción del imagen del producto
+        return db.insert(TABLE_PROJECTS, null, values);
     }
-    public long updateProduct(Product product){
+    public long updateProduct(Project project){
         ContentValues values = new ContentValues(); // Objeto para almacenar los valores a actualizar
-        values.put("nombre", product.getNombre()); // Actualización del nombre del producto
-        values.put("descripcion", product.getDescripcion()); // Actualización de la descripcion del producto
-        values.put("precio", product.getPrecio()); // Actualización del precio del producto
-        values.put("cantidad_stock", product.getCantidad()); // Actualización de la cantidad del producto
-        values.put("imagen", product.getImage()); // Actualización de la imagen del producto
+        values.put("title", project.getTitle()); // Actualización del nombre del producto
+        values.put("description", project.getDescription()); // Actualización de la descripcion del producto
+        values.put("date_init", project.getDateInit()); // Actualización del date inicial del producto
+        values.put("date_end", project.getDateEnd()); // Actualización de la date final del producto
+        values.put("user_id", project.getUserId());  // Actualización del id del usuario
+        values.put("imagen", project.getImage()); // Actualización de la imagen del producto
 
         // Definición de la condición para la actualización (en este caso, el ID del producto)
         String selection = "id = ?";
-        String[] selectionArgs = { String.valueOf(product.getId()) };
+        String[] selectionArgs = { String.valueOf(project.getId()) };
 
         // Realización de la actualización y obtención del número de filas afectadas
-        int count = db.update(TABLE_PRODUCTS, values, selection, selectionArgs);
+        int count = db.update(TABLE_PROJECTS, values, selection, selectionArgs);
 
         // Si la actualización fue exitosa, devolver el ID del producto
         if (count > 0) {
-            return product.getId();
+            return project.getId();
         } else {
             return -1; // Indica que la actualización no se realizó correctamente
         }
     }
-    public boolean deleteProduct(int productId) {
+    public boolean deleteProduct(int projectId) {
         // Verificación del ID del producto
-        if (productId <= 0) {
+        if (projectId <= 0) {
             Log.e("Database", "ID del producto no válido.");
             return false;
         }
 
         // Definición de la condición para la eliminación (en este caso, el ID del producto)
         String selection = "id = ?";
-        String[] selectionArgs = {String.valueOf(productId)};
+        String[] selectionArgs = {String.valueOf(projectId)};
 
         // Realización de la eliminación y obtención del número de filas afectadas
         int count = -1;
         try {
-            count = db.delete(TABLE_PRODUCTS, selection, selectionArgs);
+            count = db.delete(TABLE_PROJECTS, selection, selectionArgs);
         } catch (Exception e) {
             Log.e("Database", "Error al eliminar el producto: " + e.getMessage());
             return false; // Indica que la eliminación no se realizó correctamente
@@ -86,32 +85,33 @@ public class ProductDao {
 
         // Si la eliminación fue exitosa, devolver true
         if (count > 0) {
-            Log.d("Database", "Producto eliminado con ID: " + productId);
+            Log.d("Database", "Producto eliminado con ID: " + projectId);
             return true;
         } else {
-            Log.e("Database", "No se eliminó ninguna fila para el producto con ID: " + productId);
+            Log.e("Database", "No se eliminó ninguna fila para el producto con ID: " + projectId);
             return false; // Indica que la eliminación no se realizó correctamente
         }
     }
     // Método para obtener todos los productos de la tabla 'productos'
-    public List<Product> getListProducts() {
-        List<Product> productos = new ArrayList<>();
-        Cursor cursor = db.rawQuery("SELECT * FROM "+TABLE_PRODUCTS, null); // Ejecución de la consulta SQL
+    public List<Project> getListProjects(int userId) {
+        List<Project> projects = new ArrayList<>();
+        Cursor cursor = db.rawQuery("SELECT * FROM "+TABLE_PROJECTS, null); // Ejecución de la consulta SQL
 
         // Iteración sobre los resultados del cursor para obtener los datos de cada usuario
         if (cursor.moveToFirst()) {
             do {
-                Product product = new Product(
+                Project project = new Project(
                         cursor.getString(1),
                         cursor.getString(2),
-                        cursor.getFloat(3),
-                        cursor.getInt(4),
-                        cursor.getString(5));
-                product.setId(cursor.getInt(0));
-                productos.add(product);
+                        cursor.getString(3),
+                        cursor.getString(4));
+                project.setId(cursor.getInt(0));
+                project.setUserId(cursor.getInt(5));
+                project.setImage(cursor.getString(6));
+                projects.add(project);
             } while (cursor.moveToNext());
         }
         cursor.close(); // Cierre del cursor
-        return productos;
+        return projects;
     }
 }

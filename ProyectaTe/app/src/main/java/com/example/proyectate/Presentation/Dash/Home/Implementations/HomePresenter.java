@@ -1,32 +1,29 @@
 package com.example.proyectate.Presentation.Dash.Home.Implementations;
 
-import com.example.proyectate.DataAccess.DatabaseSQLite.Daos.PedidoDao;
-import com.example.proyectate.DataAccess.DatabaseSQLite.Daos.ProductDao;
-import com.example.proyectate.Models.Pedido;
-import com.example.proyectate.Models.Product;
+import android.content.Context;
+
+import com.example.proyectate.DataAccess.DatabaseSQLite.Daos.ProjectDao;
+import com.example.proyectate.DataAccess.SharedPreferences.SessionManager;
+import com.example.proyectate.Models.Project;
 import com.example.proyectate.Presentation.Dash.Home.Interfaces.IHomePresenter;
 import com.example.proyectate.Presentation.Dash.Home.Interfaces.IHomeView;
 
 public class HomePresenter implements IHomePresenter {
     private final IHomeView view;
-    private final ProductDao dao;
-    private final PedidoDao daoP;
+    private final ProjectDao dao;
+    private final Context context;
 
-    public HomePresenter(IHomeView view, ProductDao dao, PedidoDao daoP) {
+    public HomePresenter(IHomeView view, ProjectDao dao, Context context) {
         this.view = view;
         this.dao = dao;
-        this.daoP = daoP;
+        this.context = context;
         this.dao.openDb();
-        this.daoP.openDb();
     }
 
     @Override
     public void getAllProductsSuccess() {
-        view.showGetAllProductsSuccess(Product.getListProduct(dao));
+        SessionManager sessionManager = new SessionManager(context);
+        view.showGetAllProductsSuccess(Project.getListProject(dao, sessionManager.getUseId()));
     }
 
-    @Override
-    public void getLastPedidoByUserId(int userId) {
-        view.showGetLastPedidoSuccess(Pedido.getLastPedidoByUserId(daoP, userId));
-    }
 }

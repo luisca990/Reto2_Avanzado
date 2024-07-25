@@ -13,25 +13,26 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.proyectate.Models.Product;
+import com.example.proyectate.Models.Project;
 import com.example.proyectate.R;
+import com.example.proyectate.databinding.ItemProductsBinding;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class RecyclerAdapterProducts extends RecyclerView.Adapter<RecyclerAdapterProducts.ViewHolder> {
 
-    private List<Product> products;
+    private List<Project> products;
     private final Context context;
     private final OnItemClickListenerProduct listener;
 
     @SuppressLint("NotifyDataSetChanged")
-    public void updateList(List<Product> products) {
+    public void updateList(List<Project> products) {
         this.products = products;
         notifyDataSetChanged();
     }
 
-    public RecyclerAdapterProducts(Context context, List<Product> products, OnItemClickListenerProduct listener) {
+    public RecyclerAdapterProducts(Context context, List<Project> products, OnItemClickListenerProduct listener) {
         this.products = products;
         this.context = context;
         this.listener = listener;
@@ -41,7 +42,7 @@ public class RecyclerAdapterProducts extends RecyclerView.Adapter<RecyclerAdapte
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(context).inflate(R.layout.item_products, parent, false);
+        ItemProductsBinding view = ItemProductsBinding.inflate(LayoutInflater.from(parent.getContext()),parent,false);
         return new ViewHolder(view);
     }
 
@@ -57,10 +58,10 @@ public class RecyclerAdapterProducts extends RecyclerView.Adapter<RecyclerAdapte
 
     @SuppressLint("NotifyDataSetChanged")
     public void filter(String text) {
-        List<Product> filter = new ArrayList<>();
+        List<Project> filter = new ArrayList<>();
         text = text.toLowerCase();
-        for (Product product : products) {
-            if (product.getNombre().toLowerCase().contains(text)) {
+        for (Project product : products) {
+            if (product.getTitle().toLowerCase().contains(text)) {
                 filter.add(product);
             }
         }
@@ -72,17 +73,17 @@ public class RecyclerAdapterProducts extends RecyclerView.Adapter<RecyclerAdapte
         private final ImageView imageView;
         private final TextView name;
         private final TextView precio;
-        public ViewHolder(View itemView) {
-            super(itemView);
-            imageView = itemView.findViewById(R.id.iv_character);
-            name = itemView.findViewById(R.id.tv_name);
-            precio = itemView.findViewById(R.id.tv_precio);
+        public ViewHolder(ItemProductsBinding itemView) {
+            super(itemView.getRoot());
+            imageView = itemView.ivCharacter;
+            name = itemView.tvName;
+            precio = itemView.tvPrecio;
 
         }
         @SuppressLint("SetTextI18n")
-        void setDetailCategoria(Product product){
-            name.setText(product.getNombre());
-            precio.setText(product.getPrecio().toString());
+        void setDetailCategoria(Project product){
+            name.setText(product.getTitle());
+            precio.setText(product.getDateInit());
             convertImageService(product.getImage(), imageView, 150);
             imageView.setOnClickListener(v -> listener.onItemClick(product));
         }

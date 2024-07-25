@@ -24,6 +24,7 @@
             android:id="@+id/iv_back_detail"
             android:layout_width="@dimen/_80dp"
             android:layout_height="@dimen/_80dp"
+            android:importantForAccessibility="no"
             android:src="@mipmap/ic_logo_return_purple"/>
         <TextView
             android:id="@+id/tv_title_detail"
@@ -39,6 +40,7 @@
             android:layout_width="@dimen/_80dp"
             android:layout_height="@dimen/_80dp"
             android:layout_marginStart="@dimen/_10dp"
+            android:importantForAccessibility="no"
             android:src="@mipmap/ic_logo_appetit"/>
     </LinearLayout>
 
@@ -113,7 +115,7 @@
                 android:textColor="@color/white"
                 android:textSize="@dimen/_16sp"
                 android:layout_marginTop="@dimen/_4dp"
-                android:text="Your long text goes here. It will wrap into multiple lines automatically."
+                android:text="@string/text_default"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tv_title_descript_detail"
@@ -125,7 +127,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/_8dp"
                 android:layout_marginBottom="@dimen/_25dp"
-                android:gravity="center"
+                android:baselineAligned="false" android:gravity="center"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -151,7 +153,7 @@
                         android:id="@+id/tv_count_detail"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="0"
+                        android:text="@string/_0"
                         android:textColor="@color/white"
                         android:textSize="18sp" />
                 </LinearLayout>
@@ -175,7 +177,7 @@
                         android:id="@+id/tv_valor_detail"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="0"
+                        android:text="@string/_0"
                         android:textColor="@color/white"
                         android:textSize="18sp" />
                 </LinearLayout>

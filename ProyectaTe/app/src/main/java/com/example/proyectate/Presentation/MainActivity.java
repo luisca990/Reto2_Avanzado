@@ -1,7 +1,6 @@
 package com.example.proyectate.Presentation;
 
 import android.os.Bundle;
-
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
@@ -12,6 +11,7 @@ import com.example.proyectate.Presentation.AccessAcount.SplashFragment;
 import com.example.proyectate.Presentation.AccessAcount.Login.Implementations.LoginFragment;
 import com.example.proyectate.Presentation.Dash.Home.Implementations.HomeFragment;
 import com.example.proyectate.R;
+import com.example.proyectate.databinding.ActivityMainBinding;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -19,7 +19,8 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
-        setContentView(R.layout.activity_main);
+        ActivityMainBinding binding = ActivityMainBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
     }
 
     @Override

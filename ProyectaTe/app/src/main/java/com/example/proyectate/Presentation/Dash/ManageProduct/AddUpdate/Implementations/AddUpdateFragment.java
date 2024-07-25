@@ -14,26 +14,27 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import androidx.navigation.Navigation;
 import com.example.proyectate.Base.BaseFragment;
-import com.example.proyectate.DataAccess.DatabaseSQLite.Daos.ProductDao;
-import com.example.proyectate.Models.Product;
+import com.example.proyectate.DataAccess.DatabaseSQLite.Daos.ProjectDao;
+import com.example.proyectate.Models.Project;
 import com.example.proyectate.Presentation.Dash.ManageProduct.AddUpdate.Interfaces.IAddUpdateView;
 import com.example.proyectate.R;
+import com.example.proyectate.Utils.Constants;
 import com.example.proyectate.Utils.DialogueGenerico;
 
 public class AddUpdateFragment extends BaseFragment {
     private AddUpdatePresenter presenter;
-    private Product product;
+    private Project product;
     private ImageView arrow, image;
     private TextView title;
     private EditText url, name, description, count, precio;
     private Button save;
-    private ProductDao dao;
+    private ProjectDao dao;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         setCustomView(inflater.inflate(R.layout.fragment_add_update, container, false));
 
-        dao = new ProductDao(getContext());
+        dao = new ProjectDao(getContext());
         presenter = new AddUpdatePresenter(new listenerPresenter(), getContext(), dao);
 
         arrow = getCustomView().findViewById(R.id.iv_back_add_update);
@@ -47,7 +48,7 @@ public class AddUpdateFragment extends BaseFragment {
         save = getCustomView().findViewById(R.id.btn_add_update);
 
         if (getArguments() != null) {
-            Product item = getArguments().getParcelable("product", Product.class);
+            Project item = getArguments().getParcelable(Constants.Tag.PROJECT, Project.class);
             if (item != null) {
                 this.product = item;
                 fillDataFields();
@@ -62,12 +63,11 @@ public class AddUpdateFragment extends BaseFragment {
         arrow.setOnClickListener(v->
             Navigation.findNavController(requireView()).navigateUp());
         save.setOnClickListener(v->{
-            Product item = new Product(
+            Project item = new Project(
                     name.getText().toString(),
                     description.getText().toString(),
-                    (product == null)?0:Float.parseFloat(precio.getText().toString()),
-                    (product == null)?0:Integer.parseInt(count.getText().toString()),
-                    url.getText().toString()
+                    precio.getText().toString(),
+                    count.getText().toString()
             );
             if (product == null){
                 presenter.insertProduct(item);
@@ -99,10 +99,10 @@ public class AddUpdateFragment extends BaseFragment {
         title.setText(getString(R.string.actualizar_producto));
         convertImageService(product.getImage(), image, 300);
         url.setText(product.getImage());
-        name.setText(product.getNombre());
-        description.setText(product.getDescripcion());
-        count.setText(product.getCantidad().toString());
-        precio.setText(product.getPrecio().toString());
+        name.setText(product.getTitle());
+        description.setText(product.getDescription());
+        count.setText(product.getDateEnd().toString());
+        precio.setText(product.getDateInit().toString());
     }
     private void emptyFields(){
         name.setText("");
