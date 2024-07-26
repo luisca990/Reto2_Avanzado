@@ -25,7 +25,7 @@
             android:layout_width="@dimen/_80dp"
             android:layout_height="@dimen/_80dp"
             android:importantForAccessibility="no"
-            android:src="@mipmap/ic_logo_return_purple"/>
+            android:src="@mipmap/ic_logo_return"/>
         <TextView
             android:id="@+id/tv_title_detail"
             android:layout_width="0dp"
@@ -41,7 +41,7 @@
             android:layout_height="@dimen/_80dp"
             android:layout_marginStart="@dimen/_10dp"
             android:importantForAccessibility="no"
-            android:src="@mipmap/ic_logo_appetit"/>
+            android:src="@mipmap/ic_logo_app_sin"/>
     </LinearLayout>
 
     <androidx.cardview.widget.CardView
@@ -122,7 +122,7 @@
                 tools:ignore="TextViewEdits" />
 
             <LinearLayout
-                android:id="@+id/llAddCount"
+                android:id="@+id/llAddDateInit"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/_8dp"

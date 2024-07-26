@@ -1,7 +1,7 @@
 package com.example.proyectate.DataAccess.DatabaseSQLite;
 
 import static com.example.proyectate.Utils.Constants.CREATE_TABLE_PROJECTS;
-import static com.example.proyectate.Utils.Constants.CREATE_TABLE_USUARIOS;
+import static com.example.proyectate.Utils.Constants.CREATE_TABLE_USERS;
 import static com.example.proyectate.Utils.Constants.TABLE_PROJECTS;
 import static com.example.proyectate.Utils.Constants.TABLE_USERS;
 import android.content.Context;
@@ -19,7 +19,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
         db.execSQL(CREATE_TABLE_PROJECTS);
-        db.execSQL(CREATE_TABLE_USUARIOS);
+        db.execSQL(CREATE_TABLE_USERS);
     }
 
     @Override

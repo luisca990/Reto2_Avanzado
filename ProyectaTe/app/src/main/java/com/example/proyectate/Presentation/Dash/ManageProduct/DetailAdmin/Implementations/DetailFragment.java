@@ -3,6 +3,7 @@ package com.example.proyectate.Presentation.Dash.ManageProduct.DetailAdmin.Imple
 import static com.example.proyectate.Utils.Util.convertImageService;
 
 import android.annotation.SuppressLint;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,19 +12,15 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
-
+import androidx.annotation.RequiresApi;
 import androidx.navigation.Navigation;
-
 import com.example.proyectate.Base.BaseFragment;
 import com.example.proyectate.DataAccess.DatabaseSQLite.Daos.ProjectDao;
-import com.example.proyectate.DataAccess.SharedPreferences.SessionManager;
 import com.example.proyectate.Models.Project;
 import com.example.proyectate.Presentation.Dash.ManageProduct.DetailAdmin.Interfaces.IDetailView;
 import com.example.proyectate.R;
 import com.example.proyectate.Utils.Constants;
 import com.example.proyectate.Utils.DialogueGenerico;
-
-import java.util.Objects;
 
 public class DetailFragment extends BaseFragment {
     private DetailPresenter presenter;
@@ -32,6 +29,7 @@ public class DetailFragment extends BaseFragment {
     private TextView name, description, count, valor;
     private Button delete, update;
     private ProjectDao dao;
+    @RequiresApi(api = Build.VERSION_CODES.TIRAMISU)
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -81,8 +79,8 @@ public class DetailFragment extends BaseFragment {
             convertImageService(product.getImage(), image, 300);
             name.setText(product.getTitle());
             description.setText(product.getDescription());
-            count.setText(product.getDateEnd().toString());
-            valor.setText(product.getDateInit().toString());
+            count.setText(product.getDateEnd());
+            valor.setText(product.getDateInit());
         }
     }
 
