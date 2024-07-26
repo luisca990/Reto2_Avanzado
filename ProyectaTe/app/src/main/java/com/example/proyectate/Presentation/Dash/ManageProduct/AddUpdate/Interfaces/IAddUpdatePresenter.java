@@ -3,6 +3,6 @@ package com.example.proyectate.Presentation.Dash.ManageProduct.AddUpdate.Interfa
 import com.example.proyectate.Models.Project;
 
 public interface IAddUpdatePresenter {
-    void insertProduct(Project product);
-    void updateProduct(Project product);
+    void insertProject(Project product);
+    void updateProject(Project product);
 }

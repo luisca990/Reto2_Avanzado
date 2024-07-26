@@ -5,7 +5,6 @@ public class Constants {
         public static final String LOGIN = "Login";
         public static final String PROJECT = "project";
         public static final String REGISTER = "Register";
-        public static final String USER = "user";
     }
 
     //  Nombres Tablas
@@ -23,7 +22,7 @@ public class Constants {
             + "imagen TEXT,"
             + "FOREIGN KEY (user_id) REFERENCES users(id)"
             + ")";
-    public static final String CREATE_TABLE_USUARIOS = "CREATE TABLE " + TABLE_USERS + "("
+    public static final String CREATE_TABLE_USERS = "CREATE TABLE " + TABLE_USERS + "("
             + "id INTEGER PRIMARY KEY AUTOINCREMENT,"
             + "email TEXT NOT NULL UNIQUE"
             + ")";

@@ -5,7 +5,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/grayBack"
+    android:background="@android:color/transparent"
     android:paddingTop="@dimen/_16dp"
     android:layout_gravity="center"
     tools:context=".Presentation.Dash.ManageProduct.DetailAdmin.Implementations.DetailFragment">
@@ -25,7 +25,7 @@
             android:layout_width="@dimen/_80dp"
             android:layout_height="@dimen/_80dp"
             android:importantForAccessibility="no"
-            android:src="@mipmap/ic_logo_return_purple"/>
+            android:src="@mipmap/ic_logo_return"/>
         <TextView
             android:id="@+id/tv_title_detail"
             android:layout_width="0dp"
@@ -33,7 +33,7 @@
             android:layout_height="wrap_content"
             android:text="@string/details"
             android:textAlignment="center"
-            android:textColor="@color/black"
+            android:textColor="@color/white"
             android:textSize="@dimen/_30sp"
             android:textStyle="bold" />
         <ImageView
@@ -41,7 +41,7 @@
             android:layout_height="@dimen/_80dp"
             android:layout_marginStart="@dimen/_10dp"
             android:importantForAccessibility="no"
-            android:src="@mipmap/ic_logo_appetit"/>
+            android:src="@mipmap/ic_logo_app_sin"/>
     </LinearLayout>
 
     <androidx.cardview.widget.CardView
@@ -52,7 +52,7 @@
         android:layout_marginStart="@dimen/_16dp"
         android:layout_marginEnd="@dimen/_16dp"
         android:layout_marginBottom="@dimen/_35dp"
-        app:cardBackgroundColor="@color/blackyBack"
+        app:cardBackgroundColor="@color/white"
         app:cardCornerRadius="@dimen/_20dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/ll_title"
@@ -78,11 +78,12 @@
             </androidx.cardview.widget.CardView>
 
             <TextView
-                android:id="@+id/tv_name_detail"
+                android:id="@+id/tv_title"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/app_name"
-                android:textColor="@color/white"
+                android:textColor="@color/black"
+                android:textAlignment="center"
                 android:textSize="30sp"
                 android:textStyle="bold"
                 android:layout_marginTop="@dimen/_45dp"
@@ -95,13 +96,13 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/descript"
-                android:textColor="@color/white"
+                android:textColor="@color/black"
                 android:textSize="18sp"
                 android:textStyle="bold"
                 android:layout_marginTop="@dimen/_10dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tv_name_detail"/>
+                app:layout_constraintTop_toBottomOf="@+id/tv_title"/>
 
             <TextView
                 android:id="@+id/tv_descript_detail"
@@ -112,7 +113,7 @@
                 android:maxLines="4"
                 android:gravity="top"
                 android:scrollbars="vertical"
-                android:textColor="@color/white"
+                android:textColor="@color/black"
                 android:textSize="@dimen/_16sp"
                 android:layout_marginTop="@dimen/_4dp"
                 android:text="@string/text_default"
@@ -122,7 +123,7 @@
                 tools:ignore="TextViewEdits" />
 
             <LinearLayout
-                android:id="@+id/llAddCount"
+                android:id="@+id/llAddDateInit"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/_8dp"
@@ -137,24 +138,24 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="2"
-                    android:gravity="center_vertical"
-                    android:orientation="horizontal">
+                    android:layout_gravity="center_vertical"
+                    android:orientation="vertical">
 
                     <TextView
-                        android:id="@+id/tv_title_count_detail"
+                        android:id="@+id/tv_date_init"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/count"
-                        android:textColor="@color/white"
+                        android:text="@string/dateInit"
+                        android:textColor="@color/black"
                         android:textSize="18sp"
                         android:textStyle="bold" />
 
                     <TextView
-                        android:id="@+id/tv_count_detail"
+                        android:id="@+id/date_init"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/_0"
-                        android:textColor="@color/white"
+                        android:textColor="@color/black"
                         android:textSize="18sp" />
                 </LinearLayout>
 
@@ -163,22 +164,22 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="2"
                     android:gravity="center_vertical"
-                    android:orientation="horizontal">
+                    android:orientation="vertical">
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/precio_unitario"
-                        android:textColor="@color/white"
+                        android:text="@string/dateEnd"
+                        android:textColor="@color/black"
                         android:textSize="18sp"
                         android:textStyle="bold" />
 
                     <TextView
-                        android:id="@+id/tv_valor_detail"
+                        android:id="@+id/date_end"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/_0"
-                        android:textColor="@color/white"
+                        android:textColor="@color/black"
                         android:textSize="18sp" />
                 </LinearLayout>
             </LinearLayout>

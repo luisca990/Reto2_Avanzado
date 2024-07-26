@@ -1,22 +1,20 @@
 package com.example.proyectate.Presentation.Dash.Home.Adapter;
 
-import static com.example.proyectate.Utils.Util.convertImageService;
-
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.net.Uri;
 import android.view.LayoutInflater;
-import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
-
 import com.example.proyectate.Models.Project;
-import com.example.proyectate.R;
-import com.example.proyectate.databinding.ItemProductsBinding;
-
+import com.example.proyectate.databinding.ItemProjectsBinding;
+import java.io.FileNotFoundException;
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -42,7 +40,7 @@ public class RecyclerAdapterProducts extends RecyclerView.Adapter<RecyclerAdapte
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        ItemProductsBinding view = ItemProductsBinding.inflate(LayoutInflater.from(parent.getContext()),parent,false);
+        ItemProjectsBinding view = ItemProjectsBinding.inflate(LayoutInflater.from(parent.getContext()),parent,false);
         return new ViewHolder(view);
     }
 
@@ -71,21 +69,38 @@ public class RecyclerAdapterProducts extends RecyclerView.Adapter<RecyclerAdapte
 
     public class ViewHolder extends RecyclerView.ViewHolder {
         private final ImageView imageView;
-        private final TextView name;
-        private final TextView precio;
-        public ViewHolder(ItemProductsBinding itemView) {
+        private final TextView title;
+        private final TextView dateInit;
+        private final TextView dateEnd;
+        public ViewHolder(ItemProjectsBinding itemView) {
             super(itemView.getRoot());
             imageView = itemView.ivCharacter;
-            name = itemView.tvName;
-            precio = itemView.tvPrecio;
+            title = itemView.tvTitle;
+            dateInit = itemView.tvDateInit;
+            dateEnd = itemView.tvDateEnd;
 
         }
         @SuppressLint("SetTextI18n")
-        void setDetailCategoria(Project product){
-            name.setText(product.getTitle());
-            precio.setText(product.getDateInit());
-            convertImageService(product.getImage(), imageView, 150);
-            imageView.setOnClickListener(v -> listener.onItemClick(product));
+        void setDetailCategoria(Project project){
+            title.setText(project.getTitle());
+            dateInit.setText("Fecha Inicial: "+project.getDateInit());
+            dateEnd.setText("Fecha Finalización: "+project.getDateEnd());
+            convertImage(project.getImage());
+            itemView.setOnClickListener(v -> listener.onItemClick(project));
+        }
+        private void convertImage(String image) {
+            try {
+                Uri uri = Uri.parse(image);
+                InputStream inputStream = context.getContentResolver().openInputStream(uri);
+                Bitmap bitmap = BitmapFactory.decodeStream(inputStream);
+                imageView.setImageBitmap(bitmap);
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+                // Puedes manejar errores aquí, por ejemplo, mostrar una imagen de error.
+            } catch (Exception e) {
+                e.printStackTrace();
+                // Puedes manejar errores aquí, por ejemplo, mostrar una imagen de error.
+            }
         }
     }
 }

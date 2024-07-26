@@ -22,8 +22,8 @@ public class AddUpdatePresenter implements IAddUpdatePresenter {
     }
 
     @Override
-    public void insertProduct(Project product) {
-        if (!product.validateFieldsProduct()) {
+    public void insertProject(Project product) {
+        if (!product.validateFieldsProject()) {
             view.showDialogAdvertence(R.string.fiels_vacio, context.getString(R.string.mess_fiels_vacio), DialogueGenerico.TypeDialogue.ADVERTENCIA);
             return;
         }
@@ -31,8 +31,8 @@ public class AddUpdatePresenter implements IAddUpdatePresenter {
     }
 
     @Override
-    public void updateProduct(Project product) {
-        if (!product.validateFieldsProduct()) {
+    public void updateProject(Project product) {
+        if (!product.validateFieldsProject()) {
             view.showDialogAdvertence(R.string.fiels_vacio, context.getString(R.string.mess_fiels_vacio), DialogueGenerico.TypeDialogue.ADVERTENCIA);
             return;
         }

@@ -1,6 +1,7 @@
 package com.example.proyectate.Utils;
 
 import android.app.Activity;
+import android.app.DatePickerDialog;
 import android.content.Context;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
@@ -12,6 +13,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
 import com.squareup.picasso.Picasso;
+
+import java.util.Calendar;
 
 public class Util {
     public static void showDialogueGenerico(Context context) {
@@ -54,4 +57,27 @@ public class Util {
             imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
         }
     }
+    public static void showDatePickerDialog(Context context, int type, OnDateSelectedListener listener) {
+        Calendar calendar = Calendar.getInstance();
+        int year = calendar.get(Calendar.YEAR);
+        int month = calendar.get(Calendar.MONTH);
+        int day = calendar.get(Calendar.DAY_OF_MONTH);
+
+        DatePickerDialog datePickerDialog = new DatePickerDialog(
+                context,
+                (view, selectedYear, selectedMonth, selectedDay) -> {
+                    // Manejar la fecha seleccionada
+                    String selectedDate = selectedDay + "/" + (selectedMonth + 1) + "/" + selectedYear;
+                    // Llamar al callback con la fecha seleccionada
+                    listener.onDateSelected(selectedDate, type);
+                },
+                year, month, day
+        );
+        datePickerDialog.show();
+    }
+
+    public interface OnDateSelectedListener {
+        void onDateSelected(String date, int type);
+    }
+
 }

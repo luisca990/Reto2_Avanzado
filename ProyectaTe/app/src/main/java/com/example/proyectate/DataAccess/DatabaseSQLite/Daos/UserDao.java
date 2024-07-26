@@ -36,7 +36,7 @@ public class UserDao {
             return userId;
         }else {
             ContentValues values = new ContentValues(); // Objeto para almacenar los valores a insertar
-            values.put("correo", user.getEmail());// Inserción del email del usuario
+            values.put("email", user.getEmail());// Inserción del email del usuario
             return db.insert(TABLE_USERS, null, values);
         }
     }
