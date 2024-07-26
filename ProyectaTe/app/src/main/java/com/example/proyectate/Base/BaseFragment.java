@@ -30,9 +30,7 @@ public class BaseFragment extends Fragment {
                 .withText(detail)
                 .withTypeDialogue(type)
                 .withTextBtnAccept(R.string.btn_aceptar)
-                .withActionBtnAccept(() -> {
-                    Log.e("", "");
-                });
+                .withActionBtnAccept(() -> Log.e("", ""));
 
         if (getContext() != null) {
             Util.showDialogueGenerico(getContext());
