@@ -2,7 +2,9 @@ package com.example.proyectate.Base;
 
 import static com.example.proyectate.Utils.Util.hideKeyboard;
 
+import android.annotation.SuppressLint;
 import android.util.Log;
+import android.view.MotionEvent;
 import android.view.View;
 
 import androidx.fragment.app.Fragment;
@@ -39,5 +41,17 @@ public class BaseFragment extends Fragment {
 
     public void hideKeyboardFragment(){
         hideKeyboard(this);
+    }
+
+    @SuppressLint("ClickableViewAccessibility")
+    @Override
+    public void onResume() {
+        super.onResume();
+        view.setOnTouchListener((v, event) -> {
+            if (event.getAction() == MotionEvent.ACTION_DOWN) {
+                hideKeyboardFragment();
+            }
+            return false; // Devuelve false para que otros eventos táctiles sigan siendo manejados
+        });
     }
 }
