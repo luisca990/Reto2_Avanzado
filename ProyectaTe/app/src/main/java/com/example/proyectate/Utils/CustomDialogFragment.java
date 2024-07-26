@@ -24,7 +24,6 @@ public class CustomDialogFragment extends DialogFragment {
         this.onCancel = onCancel;
     }
 
-    @Nullable
     @Override
     public Dialog onCreateDialog(@Nullable Bundle savedInstanceState) {
         // Inflar el diseño del diálogo
