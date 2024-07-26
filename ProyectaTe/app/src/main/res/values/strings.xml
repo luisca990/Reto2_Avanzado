@@ -76,5 +76,6 @@
     <string name="permiso_denegado">Permiso denegado</string>
     <string name="text_delete">"Se elimino correctamente el producto: "</string>
     <string name="no_text_delete">No se elimino correctamente el producto, hubo un error</string>
+    <string name="title">Title</string>
 
 </resources>
