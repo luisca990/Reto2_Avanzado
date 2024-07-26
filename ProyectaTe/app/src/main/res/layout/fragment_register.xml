@@ -14,7 +14,7 @@
         android:layout_height="@dimen/_300dp"
         android:layout_marginTop="70dp"
         android:importantForAccessibility="no"
-        android:src="@mipmap/ic_logo_appetit"
+        android:src="@mipmap/ic_logo_app"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -38,9 +38,11 @@
             android:layout_height="wrap_content"
             android:gravity="center"
             android:text="@string/register_user"
-            android:textColor="@color/black"
+            android:textColor="@color/colorPrimary"
             android:textSize="@dimen/_35sp"
+            android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 

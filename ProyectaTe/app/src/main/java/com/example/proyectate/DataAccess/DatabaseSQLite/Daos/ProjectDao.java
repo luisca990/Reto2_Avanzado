@@ -30,7 +30,7 @@ public class ProjectDao {
         dbHelper.close();
     }
 
-    public long insertProduct(Project project){
+    public long insertProject(Project project){
         ContentValues values = new ContentValues(); // Objeto para almacenar los valores a insertar
         values.put("title", project.getTitle()); // Inserción del nombre del producto
         values.put("description", project.getDescription()); // Inserción del descripcion del producto
@@ -40,7 +40,7 @@ public class ProjectDao {
         values.put("imagen", project.getImage()); // Inserción del imagen del producto
         return db.insert(TABLE_PROJECTS, null, values);
     }
-    public long updateProduct(Project project){
+    public long updateProject(Project project){
         ContentValues values = new ContentValues(); // Objeto para almacenar los valores a actualizar
         values.put("title", project.getTitle()); // Actualización del nombre del producto
         values.put("description", project.getDescription()); // Actualización de la descripcion del producto
@@ -63,7 +63,7 @@ public class ProjectDao {
             return -1; // Indica que la actualización no se realizó correctamente
         }
     }
-    public boolean deleteProduct(int projectId) {
+    public boolean deleteProject(int projectId) {
         // Verificación del ID del producto
         if (projectId <= 0) {
             Log.e("Database", "ID del producto no válido.");
@@ -103,10 +103,10 @@ public class ProjectDao {
                 Project project = new Project(
                         cursor.getString(1),
                         cursor.getString(2),
-                        cursor.getString(3),
-                        cursor.getString(4));
+                        cursor.getString(4),
+                        cursor.getString(5));
                 project.setId(cursor.getInt(0));
-                project.setUserId(cursor.getInt(5));
+                project.setUserId(cursor.getInt(3));
                 project.setImage(cursor.getString(6));
                 projects.add(project);
             } while (cursor.moveToNext());

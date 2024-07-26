@@ -27,11 +27,11 @@ public class Project implements Parcelable {
     }
     public Project(){}
 
-    public boolean validateFieldsProduct() {
+    public boolean validateFieldsProject() {
         return title != null && !title.isEmpty()
                 && description != null && !description.isEmpty()
-                && dateInit != null && dateInit.isEmpty()
-                && dateEnd != null&& dateEnd.isEmpty();
+                && dateInit != null && !dateInit.isEmpty()
+                && dateEnd != null&& !dateEnd.isEmpty();
     }
 
     public String getTitle() {
@@ -75,9 +75,9 @@ public class Project implements Parcelable {
     }
 
     //Metodos de consumos SQlite
-    public int insertProject(ProjectDao dao){return (int) dao.insertProduct(this);}
-    public int updateProject(ProjectDao dao){return (int) dao.updateProduct(this);}
-    public Boolean deleteProject(ProjectDao dao){return dao.deleteProduct(id);}
+    public int insertProject(ProjectDao dao){return (int) dao.insertProject(this);}
+    public int updateProject(ProjectDao dao){return (int) dao.updateProject(this);}
+    public Boolean deleteProject(ProjectDao dao){return dao.deleteProject(id);}
     public static List<Project> getListProject(ProjectDao dao, int userId){
         return dao.getListProjects(userId);
     }

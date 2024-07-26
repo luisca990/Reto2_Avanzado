@@ -10,7 +10,7 @@
     <string name="password">Contraseña</string>
     <string name="CaracteresPass">1234567890abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ*</string>
     <string name="log_in">Iniciar Sesión</string>
-    <string name="registrar_usuario"><u> Registrar Usuario </u></string>
+    <string name="registrar_usuario"><u> ¿No tienes una Cuenta? </u></string>
 
 
     <string name="register_user">Registra tu Usuario</string>
@@ -29,11 +29,11 @@
     <string name="Error">Error</string>
     <string name="user_create">Se creo correctamente el usuario</string>
     <string name="login_user">Se Logueo correctamente el usuario</string>
-    <string name="title_home">Menu de Delicias</string>
-    <string name="agregar_producto">Agregar Producto</string>
+    <string name="title_home">Dashboard</string>
+    <string name="agregar_producto">Agregar Proyecto</string>
     <string name="imagen_url">Imagen (URL)</string>
     <string name="value">Value</string>
-    <string name="name">Nombre</string>
+    <string name="name">Tituló</string>
     <string name="descript">Descripción</string>
     <string name="details">Detalles</string>
     <string name="count">"Cantidad: "</string>
@@ -52,7 +52,7 @@
     <string name="insertar_usuario">Insertar usuario</string>
     <string name="insert_user">"Se inserto correctamente el producto con el id: "</string>
     <string name="update_user">"Se actualizo correctamente el producto con el id: "</string>
-    <string name="update_usuario">Actualizar Producto</string>
+    <string name="update_usuario">Actualizar Proyecto</string>
     <string name="save">Guardar</string>
     <string name="delete_product">Eliminación</string>
     <string name="rest_cantidad">No se puede disminuir mas la cantidad</string>
@@ -63,12 +63,18 @@
     <string name="se_deslogueo">" se deslogueo"</string>
     <string name="no_shopping">No tienes ningun producto en el carrito de compras</string>
     <string name="monto_total">"Monto Total: "</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="history">Historial de Pedidos</string>
     <string name="cantidad_max">"La cantidad debe ser igual o menor a: "</string>
     <string name="multiple_liness">Your long text goes here. It will wrap into multiple lines automatically.</string>
     <string name="text_default">Your long text goes here. It will wrap into multiple lines automatically.</string>
     <string name="_0">0</string>
+    <string name="dateInit">Fecha Inicio</string>
+    <string name="dateEnd">Fecha Finalización</string>
+    <string name="date_init">Seleccionar Fecha Inicial</string>
+    <string name="date_end">Seleccionar Fecha Final</string>
+    <string name="no_esta_logueado">" no esta logueado"</string>
+    <string name="permiso_denegado">Permiso denegado</string>
+    <string name="text_delete">"Se elimino correctamente el producto: "</string>
+    <string name="no_text_delete">No se elimino correctamente el producto, hubo un error</string>
 
 </resources>

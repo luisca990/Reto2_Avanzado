@@ -24,7 +24,8 @@
         <ImageView
             android:layout_width="@dimen/_100dp"
             android:layout_height="@dimen/_100dp"
-            android:src="@mipmap/ic_logo_back_white"/>
+            android:importantForAccessibility="no"
+            android:src="@mipmap/ic_logo_app_sin"/>
 
         <TextView
             android:id="@+id/textView"
@@ -42,6 +43,7 @@
             android:layout_width="@dimen/_50dp"
             android:layout_height="@dimen/_50dp"
             android:layout_marginStart="@dimen/_10dp"
+            android:importantForAccessibility="no"
             android:src="@mipmap/ic_logout"/>
     </LinearLayout>
 
@@ -58,47 +60,46 @@
             android:id="@+id/searchView"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:queryHint="Filtra el pan que Buscas"
+            android:importantForAutofill="no"
+            android:inputType="text"
+            android:queryHint="Buscar Proyecto"
             android:textColor="@color/black"
             android:padding="@dimen/_16dp"
-            android:background="@android:color/transparent"
+            android:background="@color/grayBack"
             android:drawableEnd="@android:drawable/ic_menu_search"
-            android:iconifiedByDefault="false" />
+            android:iconifiedByDefault="false"
+            tools:ignore="LabelFor" />
     </LinearLayout>
 
-    <LinearLayout
-        android:id="@+id/linearLayout"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvProjects"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_marginTop="@dimen/_16dp"
-        android:background="#D9D9D9"
-        android:orientation="vertical"
+        android:paddingStart="@dimen/_16dp"
+        android:paddingEnd="@dimen/_16dp"
+        android:layout_marginBottom="@dimen/_10dp"
+        android:layout_marginTop="@dimen/_4dp"
+        android:orientation="horizontal"
+        android:background="@color/grayBack"
+        android:paddingBottom="@dimen/_8dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ll_searchView">
+        app:layout_constraintTop_toBottomOf="@+id/ll_searchView" />
 
-        <TextView
-            android:id="@+id/tvSubTitle"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/_16dp"
-            android:layout_marginTop="@dimen/_16dp"
-            android:layout_marginEnd="@dimen/_16dp"
-            android:text="Selecciona tu pan Favorito"
-            android:textColor="@color/black"
-            android:textSize="@dimen/_16sp" />
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rvProducts"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginStart="@dimen/_16dp"
-            android:layout_marginEnd="@dimen/_16dp"
-            android:layout_marginBottom="@dimen/_10dp"
-            android:orientation="horizontal"
-            android:paddingBottom="@dimen/_8dp" />
-    </LinearLayout>
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fab_synchronize"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:importantForAccessibility="no"
+        android:src="@mipmap/ic_synchronize"
+        app:fabSize="mini"
+        style="@style/CustomFAB"
+        app:backgroundTint="@color/grayBack"
+        android:layout_marginBottom="@dimen/_16dp"
+        android:layout_marginEnd="@dimen/_25dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/fab_add" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fab_add"
@@ -106,34 +107,8 @@
         android:layout_height="wrap_content"
         android:importantForAccessibility="no"
         android:src="@mipmap/ic_input_add"
-        app:fabSize="mini"
-        style="@style/CustomFAB"
-        app:backgroundTint="@color/grayBack"
-        android:layout_marginBottom="@dimen/_25dp"
+        android:layout_marginBottom="@dimen/_35dp"
         android:layout_marginEnd="@dimen/_25dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/fab_buy" />
-
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/fab_history"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:importantForAccessibility="no"
-        android:src="@mipmap/ic_history"
-        app:fabSize="mini"
-        style="@style/CustomFAB"
-        app:backgroundTint="@color/grayBack"
-        android:layout_marginBottom="@dimen/_25dp"
-        android:layout_marginEnd="@dimen/_25dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/fab_buy" />
-
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/fab_buy"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:importantForAccessibility="no"
-        android:src="@mipmap/ic_input_buy"
         app:fabSize="mini"
         style="@style/CustomFAB"
         app:backgroundTint="@color/grayBack"
