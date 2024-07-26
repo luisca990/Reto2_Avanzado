@@ -1,14 +1,11 @@
 package com.example.proyectate.Base;
 
 import static com.example.proyectate.Utils.Util.hideKeyboard;
-
 import android.annotation.SuppressLint;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
-
 import androidx.fragment.app.Fragment;
-
 import com.example.proyectate.R;
 import com.example.proyectate.Utils.DialogueGenerico;
 import com.example.proyectate.Utils.Util;

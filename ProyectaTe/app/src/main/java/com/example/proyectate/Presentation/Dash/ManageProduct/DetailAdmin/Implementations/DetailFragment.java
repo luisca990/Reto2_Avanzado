@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
@@ -19,6 +20,7 @@ import com.example.proyectate.Models.Project;
 import com.example.proyectate.Presentation.Dash.ManageProduct.DetailAdmin.Interfaces.IDetailView;
 import com.example.proyectate.R;
 import com.example.proyectate.Utils.Constants;
+import com.example.proyectate.Utils.CustomDialogFragment;
 import com.example.proyectate.Utils.DialogueGenerico;
 import com.example.proyectate.databinding.FragmentDetailBinding;
 
@@ -42,9 +44,9 @@ public class DetailFragment extends BaseFragment {
         presenter = new DetailPresenter(new listenerPresenter(), dao);
 
         if (getArguments() != null) {
-            Project item = getArguments().getParcelable(Constants.Tag.PROJECT, Project.class);
+            Project item = getArguments().getParcelable(Constants.Tag.PROJECT);
             if (item != null) {
-                this.project = item; // Show character details immediately
+                this.project = item;
             }
         }
         return getCustomView();
@@ -57,7 +59,7 @@ public class DetailFragment extends BaseFragment {
             Bundle bundle = new Bundle();
             bundle.putParcelable(Constants.Tag.PROJECT, project);
             Navigation.findNavController(requireView()).navigate(R.id.action_detailFragment_to_addUpdateFragment, bundle);});
-        binding.btnDeleteSection.setOnClickListener(v-> presenter.deleteProduct(project));
+        binding.btnDeleteSection.setOnClickListener(v-> showCustomDialog());
         binding.ivBackDetail.setOnClickListener(v-> Navigation.findNavController(requireView()).navigate(R.id.action_detailFragment_to_homeFragment));
         completeProductData();
     }
@@ -99,5 +101,20 @@ public class DetailFragment extends BaseFragment {
     public void onDestroy() {
         super.onDestroy();
         dao.closeDb();
+    }
+
+    public void showCustomDialog() {
+        CustomDialogFragment dialog = new CustomDialogFragment(
+                "¿Seguro que quieres Eliminar?",
+                "",
+                () -> {
+                    // Manejar evento de "Aceptar"
+                    presenter.deleteProduct(project);
+                },
+                () -> {
+                    Toast.makeText(getContext(), "Esta bien no se elimina", Toast.LENGTH_SHORT).show();
+                }
+        );
+        dialog.show(requireActivity().getSupportFragmentManager(), "CustomDialogFragment");
     }
 }
