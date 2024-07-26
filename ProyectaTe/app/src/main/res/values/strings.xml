@@ -74,5 +74,7 @@
     <string name="date_end">Seleccionar Fecha Final</string>
     <string name="no_esta_logueado">" no esta logueado"</string>
     <string name="permiso_denegado">Permiso denegado</string>
+    <string name="text_delete">"Se elimino correctamente el producto: "</string>
+    <string name="no_text_delete">No se elimino correctamente el producto, hubo un error</string>
 
 </resources>

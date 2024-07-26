@@ -3,6 +3,8 @@ package com.example.proyectate.Presentation.Dash.ManageProduct.AddUpdate.Impleme
 import static android.app.Activity.RESULT_OK;
 import static com.example.proyectate.Utils.Util.showDatePickerDialog;
 import android.annotation.SuppressLint;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
@@ -11,8 +13,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;import android.content.Intent;
 import android.net.Uri;
-import androidx.activity.result.ActivityResultLauncher;
-import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.navigation.Navigation;
@@ -31,6 +31,9 @@ import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import android.Manifest;
 import android.widget.Toast;
+
+import java.io.FileNotFoundException;
+import java.io.InputStream;
 
 public class AddUpdateFragment extends BaseFragment {
     private AddUpdatePresenter presenter;
@@ -93,9 +96,19 @@ public class AddUpdateFragment extends BaseFragment {
     private void fillDataFields(){
         binding.tvTitleAddUpdate.setText(getString(R.string.actualizar_producto));
         binding.etTitle.setText(project.getTitle());
-        if (project.getImage() != null) try {binding.ivImageAddUpdate.setImageURI(Uri.parse(project.getImage()));} catch (
-                Exception e) {
-            throw new RuntimeException(e);
+        if (project.getImage() != null) {
+            try {
+                Uri uri = Uri.parse(project.getImage());
+                InputStream inputStream = requireContext().getContentResolver().openInputStream(uri);
+                Bitmap bitmap = BitmapFactory.decodeStream(inputStream);
+                binding.ivImageAddUpdate.setImageBitmap(bitmap);
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+                // Puedes manejar errores aquí, por ejemplo, mostrar una imagen de error.
+            } catch (Exception e) {
+                e.printStackTrace();
+                // Puedes manejar errores aquí, por ejemplo, mostrar una imagen de error.
+            }
         }
         binding.etDescript.setText(project.getDescription());
         binding.buttonDatePickerInit.setText(project.getDateEnd());
@@ -183,7 +196,7 @@ public class AddUpdateFragment extends BaseFragment {
         public void showUpdateProduct(int id, String name) {
             dialogueFragment(R.string.update_usuario, getString(R.string.update_user)+id+" nombre: "+name, DialogueGenerico.TypeDialogue.OK);
             Bundle bundle = new Bundle();
-            bundle.putParcelable("product", project);
+            bundle.putParcelable(Constants.Tag.PROJECT, project);
             Navigation.findNavController(requireView()).navigate(R.id.action_addUpdateFragment_to_detailFragment, bundle);
         }
 

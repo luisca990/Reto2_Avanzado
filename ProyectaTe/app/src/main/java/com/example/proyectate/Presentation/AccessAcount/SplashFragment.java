@@ -20,6 +20,12 @@ public class SplashFragment extends BaseFragment {
                              Bundle savedInstanceState) {
         FragmentSplashBinding binding = FragmentSplashBinding.inflate(getLayoutInflater());
         setCustomView(binding.getRoot());
+        return getCustomView();
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
         new Handler().postDelayed(() -> {
             if (sessionManager.isLoggedIn()) {
                 Navigation.findNavController(requireView()).navigate(R.id.action_splashFragment_to_homeFragment);
@@ -28,6 +34,5 @@ public class SplashFragment extends BaseFragment {
             }
         }, 4000);
         sessionManager = new SessionManager(requireContext());
-        return getCustomView();
     }
 }

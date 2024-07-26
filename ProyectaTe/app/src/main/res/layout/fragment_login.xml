@@ -103,7 +103,7 @@
                 android:layout_gravity="center"
                 android:layout_marginStart="@dimen/_10dp"
                 android:layout_marginEnd="@dimen/_10dp"
-                android:paddingLeft="@dimen/_10dp"
+                android:paddingStart="@dimen/_10dp"
                 android:background="@drawable/edt_email"
                 android:digits="@string/CaracteresPass"
                 android:hint="@string/password"
@@ -111,7 +111,8 @@
                 android:inputType="textPassword"
                 android:maxLength="10"
                 android:textColor="@color/black"
-                android:textColorHint="@color/black" />
+                android:textColorHint="@color/black"
+                tools:ignore="RtlSymmetry" />
 
         </LinearLayout>
 
