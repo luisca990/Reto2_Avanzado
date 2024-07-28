@@ -7,13 +7,8 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
-import android.widget.ImageView;
-
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
-
-import com.squareup.picasso.Picasso;
-
 import java.util.Calendar;
 
 public class Util {
@@ -32,18 +27,6 @@ public class Util {
             return activeNetworkInfo != null && activeNetworkInfo.isConnected();
         } catch (Exception e) {
             return false;
-        }
-    }
-    public static void convertImageService(String url, ImageView viewImage, int size) {
-        try {
-            Picasso
-                    .get()
-                    .load(url)
-                    .centerCrop()
-                    .resize(size, size)
-                    .into(viewImage);
-        }catch (Exception e){
-            System.out.println(e.getMessage());
         }
     }
     public static void hideKeyboard(Fragment fragment) {
@@ -73,6 +56,8 @@ public class Util {
                 },
                 year, month, day
         );
+        // Establecer la fecha mínima (hoy) para el DatePicker
+        datePickerDialog.getDatePicker().setMinDate(calendar.getTimeInMillis());
         datePickerDialog.show();
     }
 
