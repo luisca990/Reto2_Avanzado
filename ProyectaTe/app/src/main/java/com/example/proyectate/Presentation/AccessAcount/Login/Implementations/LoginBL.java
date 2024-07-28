@@ -44,7 +44,11 @@ public class LoginBL implements ILoginBL {
                 User user = (User) objectResponse;
                 listener.responseLogin(user);
                 long userID = dao.insertUser(user);
-                sessionManager.createLoginSession(user.getEmail(), (int) userID);
+                if (userID == -1) {
+                    listener.errorLoginDB(new MessageResponse(0, "Hubo un error al ingresar en la base de datos"));
+                    return;
+                }
+                sessionManager.createLoginSession(user.getEmail(), user.getId());
                 dao.closeDb();
             }
         }

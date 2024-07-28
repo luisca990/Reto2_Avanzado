@@ -29,7 +29,8 @@
     <string name="Error">Error</string>
     <string name="user_create">Se creo correctamente el usuario</string>
     <string name="login_user">Se Logueo correctamente el usuario</string>
-    <string name="title_home">Dashboard</string>
+    <string name="title_home_local">Dashboard Local</string>
+    <string name="title_home_firebase">Dashboard Firebase</string>
     <string name="agregar_producto">Agregar Proyecto</string>
     <string name="imagen_url">Imagen (URL)</string>
     <string name="value">Value</string>
@@ -77,5 +78,9 @@
     <string name="text_delete">"Se elimino correctamente el producto: "</string>
     <string name="no_text_delete">No se elimino correctamente el producto, hubo un error</string>
     <string name="title">Title</string>
+    <string name="not_internet">No hay conexión a internet</string>
+    <string name="error_user_db">Error User DB</string>
+    <string name="sincronizacion">Sincronización</string>
+    <string name="sincronizacion_exitosa">Sincronización Exitosa</string>
 
 </resources>

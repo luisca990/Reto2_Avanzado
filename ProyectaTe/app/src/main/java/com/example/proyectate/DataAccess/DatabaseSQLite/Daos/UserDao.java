@@ -6,7 +6,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import static com.example.proyectate.Utils.Constants.TABLE_USERS;
-import com.example.proyectate.DataAccess.DatabaseSQLite.DatabaseHelper;
+import com.example.proyectate.DataAccess.DatabaseSQLite.helper.DatabaseHelper;
 import com.example.proyectate.Models.User;
 
 public class UserDao {
@@ -36,6 +36,7 @@ public class UserDao {
             return userId;
         }else {
             ContentValues values = new ContentValues(); // Objeto para almacenar los valores a insertar
+            values.put("id", user.getId());// Inserción del email del usuario
             values.put("email", user.getEmail());// Inserción del email del usuario
             return db.insert(TABLE_USERS, null, values);
         }

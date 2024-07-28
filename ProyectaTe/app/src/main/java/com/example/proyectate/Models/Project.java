@@ -1,18 +1,29 @@
 package com.example.proyectate.Models;
 
+import android.content.Context;
 import android.os.Parcel;
 import android.os.Parcelable;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 
 import com.example.proyectate.DataAccess.DatabaseSQLite.Daos.ProjectDao;
+import com.example.proyectate.DataAccess.DatabaseSQLite.helper.FirebaseHelper;
+import com.example.proyectate.DataAccess.DatabaseSQLite.helper.interfaces.OnProjectsLoadedListener;
+import com.example.proyectate.DataAccess.DatabaseSQLite.helper.interfaces.onListenerCallback;
+import com.example.proyectate.Presentation.Dash.Home.Interfaces.GetProjectsListener;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
 public class Project implements Parcelable {
 
     private int id;
-    private int userId;
+    private String userId;
     private String title;
     private String description;
     private String dateInit;
@@ -66,11 +77,11 @@ public class Project implements Parcelable {
         this.id = id;
     }
 
-    public int getUserId() {
+    public String getUserId() {
         return userId;
     }
 
-    public void setUserId(int userId) {
+    public void setUserId(String userId) {
         this.userId = userId;
     }
 
@@ -78,20 +89,48 @@ public class Project implements Parcelable {
     public int insertProject(ProjectDao dao){return (int) dao.insertProject(this);}
     public int updateProject(ProjectDao dao){return (int) dao.updateProject(this);}
     public Boolean deleteProject(ProjectDao dao){return dao.deleteProject(id);}
-    public static List<Project> getListProject(ProjectDao dao, int userId){
-        return dao.getListProjects(userId);
+    public static List<Project> getListProject(ProjectDao dao, String userId){return dao.getListProjects(userId);}
+
+    //Metodos de Firebase
+    public static void synchronizeData(FirebaseHelper firebase, List<Project> list, onListenerCallback callback){
+        firebase.syncProjects(list, new onListenerCallback() {
+            @Override
+            public void onSuccessChecked(boolean exists) {
+                callback.onSuccessChecked(exists);
+            }
+
+            @Override
+            public void onError(Exception e) {
+                callback.onError(e);
+            }
+        });
+    }
+
+    public static void getProjectsFirebase(String userId, FirebaseHelper firebase, GetProjectsListener onList) {
+        firebase.getProjectsForUser(userId, new OnProjectsLoadedListener() {
+            @Override
+            public void onProjectsLoaded(List<Project> projects) {
+                onList.onListProjects(projects);
+            }
+
+            @Override
+            public void onError(Exception e) {
+                onList.onError(e);
+            }
+        });
     }
 
     // Parceo del modelo
     protected Project(Parcel in){
         id = in.readInt();
-        userId = in.readInt();
+        userId = in.readString();
         title = in.readString();
         description = in.readString();
         dateEnd = in.readString();
         dateInit = in.readString();
         image = in.readString();
     }
+
     public static final Creator<Project> CREATOR = new Creator<Project>() {
         @Override
         public Project createFromParcel(Parcel in) {
@@ -110,7 +149,7 @@ public class Project implements Parcelable {
     @Override
     public void writeToParcel(@NonNull Parcel parcel, int flags) {
         parcel.writeInt(id);
-        parcel.writeInt(userId);
+        parcel.writeString(userId);
         parcel.writeString(title);
         parcel.writeString(description);
         parcel.writeString(dateEnd);

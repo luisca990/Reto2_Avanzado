@@ -6,6 +6,7 @@ import android.content.Context;
 
 import androidx.annotation.NonNull;
 
+import com.example.proyectate.Models.MessageResponse;
 import com.example.proyectate.Models.User;
 import com.example.proyectate.Presentation.AccessAcount.Login.Interfaces.ILoginBL;
 import com.example.proyectate.Presentation.AccessAcount.Login.Interfaces.ILoginListener;
@@ -31,7 +32,7 @@ public class LoginPresenter implements ILoginPresenter {
             return;
         }
         if (!user.validateFieldsUser()) {
-            loginView.showDialogFragment(R.string.fields_empty, R.string.details_fields_empty, DialogueGenerico.TypeDialogue.ADVERTENCIA);
+            loginView.showDialogFragment(R.string.fields_empty, context.getString(R.string.details_fields_empty), DialogueGenerico.TypeDialogue.ADVERTENCIA);
             return;
         }
         bL.startSection(user);
@@ -46,6 +47,11 @@ public class LoginPresenter implements ILoginPresenter {
         @Override
         public void responseLogin(@NonNull User user) {
             loginView.responseLogin(user);
+        }
+
+        @Override
+        public void errorLoginDB(MessageResponse mess) {
+            loginView.showDialogFragment(R.string.error_user_db, mess.getMessage(), DialogueGenerico.TypeDialogue.ERROR);
         }
     }
 }

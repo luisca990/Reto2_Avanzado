@@ -16,14 +16,14 @@ public class Constants {
             + "id INTEGER PRIMARY KEY AUTOINCREMENT,"
             + "title TEXT NOT NULL,"
             + "description TEXT,"
-            + "user_id INTEGER NOT NULL,"
+            + "user_id TEXT NOT NULL,"
             + "date_init TEXT NOT NULL,"
             + "date_end TEXT NOT NULL,"
             + "imagen TEXT,"
             + "FOREIGN KEY (user_id) REFERENCES users(id)"
             + ")";
     public static final String CREATE_TABLE_USERS = "CREATE TABLE " + TABLE_USERS + "("
-            + "id INTEGER PRIMARY KEY AUTOINCREMENT,"
+            + "id TEXT PRIMARY KEY,"
             + "email TEXT NOT NULL UNIQUE"
             + ")";
 }

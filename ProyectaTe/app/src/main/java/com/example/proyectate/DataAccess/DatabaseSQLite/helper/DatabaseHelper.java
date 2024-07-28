@@ -1,4 +1,4 @@
-package com.example.proyectate.DataAccess.DatabaseSQLite;
+package com.example.proyectate.DataAccess.DatabaseSQLite.helper;
 
 import static com.example.proyectate.Utils.Constants.CREATE_TABLE_PROJECTS;
 import static com.example.proyectate.Utils.Constants.CREATE_TABLE_USERS;

@@ -18,10 +18,10 @@ public class SessionManager {
         editor = pref.edit();
     }
 
-    public void createLoginSession(String email, int userId) {
+    public void createLoginSession(String email, String userId) {
         editor.putBoolean(IS_LOGGED_IN, true);
         editor.putString(KEY_EMAIL, email);
-        editor.putInt(KEY_USER_ID, userId);
+        editor.putString(KEY_USER_ID, userId);
         editor.commit();
     }
 
@@ -32,8 +32,8 @@ public class SessionManager {
     public String getUserEmail() {
         return pref.getString(KEY_EMAIL, null);
     }
-    public int getUseId() {
-        return pref.getInt(KEY_USER_ID, 0);
+    public String getUseId() {
+        return pref.getString(KEY_USER_ID, null);
     }
 
     public void logout() {

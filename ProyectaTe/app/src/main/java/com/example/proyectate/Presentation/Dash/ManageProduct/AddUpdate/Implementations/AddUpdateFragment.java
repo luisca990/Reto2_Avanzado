@@ -52,10 +52,7 @@ public class AddUpdateFragment extends BaseFragment {
         presenter = new AddUpdatePresenter(new listenerPresenter(), getContext(), dao);
 
         if (getArguments() != null) {
-            Project item = null;
-            if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.TIRAMISU) {
-                item = getArguments().getParcelable(Constants.Tag.PROJECT, Project.class);
-            }
+            Project item = getArguments().getParcelable(Constants.Tag.PROJECT);
             if (item != null) {
                 this.project = item;
                 fillDataFields();
@@ -96,6 +93,7 @@ public class AddUpdateFragment extends BaseFragment {
     private void fillDataFields(){
         binding.tvTitleAddUpdate.setText(getString(R.string.actualizar_producto));
         binding.etTitle.setText(project.getTitle());
+        binding.etTitle.setFocusable(false);
         if (project.getImage() != null) {
             try {
                 Uri uri = Uri.parse(project.getImage());

@@ -6,7 +6,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
-import com.example.proyectate.DataAccess.DatabaseSQLite.DatabaseHelper;
+import com.example.proyectate.DataAccess.DatabaseSQLite.helper.DatabaseHelper;
 import com.example.proyectate.Models.Project;
 import java.util.ArrayList;
 import java.util.List;
@@ -93,21 +93,23 @@ public class ProjectDao {
         }
     }
     // Método para obtener todos los productos de la tabla 'productos'
-    public List<Project> getListProjects(int userId) {
+    public List<Project> getListProjects(String userId) {
         List<Project> projects = new ArrayList<>();
-        Cursor cursor = db.rawQuery("SELECT * FROM "+TABLE_PROJECTS, null); // Ejecución de la consulta SQL
+        // Consulta SQL para seleccionar proyectos específicos por userId
+        String query = "SELECT * FROM " + TABLE_PROJECTS + " WHERE user_id = ?";
+        Cursor cursor = db.rawQuery(query, new String[]{String.valueOf(userId)}); // Ejecución de la consulta SQL con parámetro de selección
 
-        // Iteración sobre los resultados del cursor para obtener los datos de cada usuario
+        // Iteración sobre los resultados del cursor para obtener los datos de cada proyecto
         if (cursor.moveToFirst()) {
             do {
                 Project project = new Project(
-                        cursor.getString(1),
-                        cursor.getString(2),
-                        cursor.getString(4),
-                        cursor.getString(5));
-                project.setId(cursor.getInt(0));
-                project.setUserId(cursor.getInt(3));
-                project.setImage(cursor.getString(6));
+                        cursor.getString(1), // Nombre del proyecto
+                        cursor.getString(2), // Descripción del proyecto
+                        cursor.getString(4), // Fecha de inicio (o cualquier otro campo que tengas)
+                        cursor.getString(5)); // Fecha de fin (o cualquier otro campo que tengas)
+                project.setId(cursor.getInt(0)); // ID del proyecto
+                project.setUserId(cursor.getString(3)); // userId del proyecto
+                project.setImage(cursor.getString(6)); // Imagen del proyecto
                 projects.add(project);
             } while (cursor.moveToNext());
         }

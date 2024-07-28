@@ -6,5 +6,5 @@ import com.example.proyectate.Utils.DialogueGenerico;
 public interface ILoginView {
     void responseLogin(User user);
     void credentialsIncorrect();
-    void showDialogFragment(int title, int detail, DialogueGenerico.TypeDialogue type);
+    void showDialogFragment(int title, String detail, DialogueGenerico.TypeDialogue type);
 }
