@@ -59,8 +59,8 @@ public class LoginFragment extends BaseFragment {
         }
 
         @Override
-        public void showDialogFragment(int title, int detail, DialogueGenerico.TypeDialogue type) {
-            dialogueFragment(title, getString(detail), type);
+        public void showDialogFragment(int title, String detail, DialogueGenerico.TypeDialogue type) {
+            dialogueFragment(title, detail, type);
         }
     }
 }

@@ -1,6 +1,7 @@
 package com.example.proyectate.Models;
 
 public class User{
+    private String id;
     private String email;
     private String password;
     private String confPassword;
@@ -30,11 +31,15 @@ public class User{
         this.password = password;
     }
 
-    public String getConfPassword() {
-        return confPassword;
-    }
-
     public void setConfPassword(String confPassword) {
         this.confPassword = confPassword;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 }

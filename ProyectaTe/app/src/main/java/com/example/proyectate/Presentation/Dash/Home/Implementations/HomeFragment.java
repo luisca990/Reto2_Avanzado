@@ -20,6 +20,7 @@ import com.example.proyectate.Presentation.Dash.Home.Adapter.RecyclerAdapterProd
 import com.example.proyectate.Presentation.Dash.Home.Interfaces.IHomeView;
 import com.example.proyectate.R;
 import com.example.proyectate.Utils.Constants;
+import com.example.proyectate.Utils.DialogueGenerico;
 import com.example.proyectate.databinding.FragmentHomeBinding;
 
 import java.util.ArrayList;
@@ -28,24 +29,25 @@ import java.util.List;
 public class HomeFragment extends BaseFragment {
     private HomePresenter presenter;
     private SessionManager sessionManager;
-    private List<Project> productsList;
+    private List<Project> projectsList;
     private RecyclerAdapterProducts adapter;
     private ProjectDao dao;
     private FragmentHomeBinding binding;
+    private boolean isFirebase = false;
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         binding = FragmentHomeBinding.inflate(getLayoutInflater());
         setCustomView(binding.getRoot());
         // Inicialización de la base de datos y conexión
-        productsList = new ArrayList<>();
+        projectsList = new ArrayList<>();
         RecyclerView rv = binding.rvProjects;
 
         dao = new ProjectDao(getContext());
         presenter = new HomePresenter(new listenerPresenter(), dao, getContext());
         sessionManager = new SessionManager(requireContext());
 
-        adapter = new RecyclerAdapterProducts(getContext(), productsList, new listenerAdapter());
+        adapter = new RecyclerAdapterProducts(getContext(), projectsList, new listenerAdapter());
         rv.setHasFixedSize(true);
         rv.setLayoutManager(new LinearLayoutManager(getContext(), RecyclerView.VERTICAL, false));
         rv.setAdapter(adapter);
@@ -58,14 +60,18 @@ public class HomeFragment extends BaseFragment {
     @Override
     public void onResume() {
         super.onResume();
-        presenter.getAllProductsSuccess();
+        presenter.getAllProjectsSuccess();
         binding.ivLogout.setOnClickListener(v -> {
             sessionManager.logout();
             Toast.makeText(getContext(), getString(R.string.el_usuario)+sessionManager.getUserEmail()+getString(R.string.se_deslogueo), Toast.LENGTH_SHORT).show();
             Navigation.findNavController(requireView()).navigate(R.id.action_homeFragment_to_loginFragment);
         });
         binding.fabAdd.setOnClickListener(v-> Navigation.findNavController(requireView()).navigate(R.id.action_homeFragment_to_addUpdateFragment));
-        binding.fabSynchronize.setOnClickListener(v-> {});
+        binding.fabSynchronize.setOnClickListener(v-> presenter.synchronizeData(projectsList));
+        binding.fabFirebase.setOnClickListener(v-> {
+            isFirebase = true;
+            presenter.getProjectsFirebase();
+        });
     }
 
     private void displaySesion(){
@@ -74,6 +80,7 @@ public class HomeFragment extends BaseFragment {
             Toast.makeText(getContext(), getString(R.string.el_usuario) + sessionManager.getUserEmail() + getString(R.string.no_esta_logueado), Toast.LENGTH_SHORT).show();
         }
     }
+
     private void textSearchProduct(){
         binding.searchView.addTextChangedListener(new TextWatcher() {
             @Override
@@ -84,7 +91,7 @@ public class HomeFragment extends BaseFragment {
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
                 if(s.toString().isEmpty()){
-                    adapter.updateList(productsList);
+                    adapter.updateList(projectsList);
                     hideKeyboardFragment();
                     return;
                 }
@@ -100,17 +107,34 @@ public class HomeFragment extends BaseFragment {
 
     private class listenerPresenter implements IHomeView{
         @Override
-        public void showGetAllProductsSuccess(List<Project> products) {
-            productsList = products;
-            adapter.updateList(products);
+        public void showGetAllProductsSuccess(List<Project> projects) {
+            if (isFirebase && projects.isEmpty()){
+                Toast.makeText(getContext(), "No tienes projectos sincronizados en Firebase", Toast.LENGTH_SHORT).show();
+                isFirebase = false;
+                presenter.getAllProjectsSuccess();
+                return;
+            }
+            if (isFirebase) {
+                binding.textView.setText(getText(R.string.title_home_firebase));
+                isFirebase = false;
+            } else {
+                binding.textView.setText(getText(R.string.title_home_local));
+            }
+            projectsList = projects;
+            adapter.updateList(projects);
+        }
+
+        @Override
+        public void showDialogFragment(int title, String detail, DialogueGenerico.TypeDialogue type) {
+            dialogueFragment(title, detail, type);
         }
     }
 
     private class listenerAdapter implements OnItemClickListenerProduct {
         @Override
-        public void onItemClick(Project product) {
+        public void onItemClick(Project project) {
             Bundle bundle = new Bundle();
-            bundle.putParcelable(Constants.Tag.PROJECT, product);
+            bundle.putParcelable(Constants.Tag.PROJECT, project);
             Navigation.findNavController(requireView()).navigate(R.id.action_homeFragment_to_detailFragment, bundle);
         }
     }
