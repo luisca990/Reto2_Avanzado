@@ -34,18 +34,6 @@ public class Util {
             return false;
         }
     }
-    public static void convertImageService(String url, ImageView viewImage, int size) {
-        try {
-            Picasso
-                    .get()
-                    .load(url)
-                    .centerCrop()
-                    .resize(size, size)
-                    .into(viewImage);
-        }catch (Exception e){
-            System.out.println(e.getMessage());
-        }
-    }
     public static void hideKeyboard(Fragment fragment) {
         Activity activity = fragment.getActivity();
         if (activity != null) {
@@ -73,6 +61,8 @@ public class Util {
                 },
                 year, month, day
         );
+        // Establecer la fecha mínima (hoy) para el DatePicker
+        datePickerDialog.getDatePicker().setMinDate(calendar.getTimeInMillis());
         datePickerDialog.show();
     }
 
