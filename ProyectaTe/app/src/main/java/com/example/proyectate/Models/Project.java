@@ -1,24 +1,14 @@
 package com.example.proyectate.Models;
 
-import android.content.Context;
 import android.os.Parcel;
 import android.os.Parcelable;
-import android.widget.Toast;
-
 import androidx.annotation.NonNull;
-
 import com.example.proyectate.DataAccess.DatabaseSQLite.Daos.ProjectDao;
 import com.example.proyectate.DataAccess.DatabaseSQLite.helper.FirebaseHelper;
 import com.example.proyectate.DataAccess.DatabaseSQLite.helper.interfaces.OnProjectsLoadedListener;
 import com.example.proyectate.DataAccess.DatabaseSQLite.helper.interfaces.onListenerCallback;
 import com.example.proyectate.Presentation.Dash.Home.Interfaces.GetProjectsListener;
-
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Map;
-import java.util.Set;
 
 public class Project implements Parcelable {
 

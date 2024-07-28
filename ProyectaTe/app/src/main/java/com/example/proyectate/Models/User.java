@@ -31,10 +31,6 @@ public class User{
         this.password = password;
     }
 
-    public String getConfPassword() {
-        return confPassword;
-    }
-
     public void setConfPassword(String confPassword) {
         this.confPassword = confPassword;
     }
