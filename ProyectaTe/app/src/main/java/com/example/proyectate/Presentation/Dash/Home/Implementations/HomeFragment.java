@@ -8,7 +8,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -41,13 +40,6 @@ public class HomeFragment extends BaseFragment {
         binding = FragmentHomeBinding.inflate(getLayoutInflater());
         setCustomView(binding.getRoot());
 
-        return getCustomView();
-    }
-
-    @Override
-    public void onResume() {
-        super.onResume();
-        sessionManager = new SessionManager(requireContext());
         // Inicialización de la base de datos y conexión
         projectsList = new ArrayList<>();
         RecyclerView rv = binding.rvProjects;
@@ -60,6 +52,13 @@ public class HomeFragment extends BaseFragment {
         rv.setLayoutManager(new LinearLayoutManager(getContext(), RecyclerView.VERTICAL, false));
         rv.setAdapter(adapter);
 
+        return getCustomView();
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        sessionManager = new SessionManager(requireContext());
         displaySesion();
         textSearchProduct();
         presenter.getAllProjectsSuccess();
