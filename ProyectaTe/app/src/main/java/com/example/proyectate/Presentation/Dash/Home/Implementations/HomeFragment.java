@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -39,13 +40,20 @@ public class HomeFragment extends BaseFragment {
                              Bundle savedInstanceState) {
         binding = FragmentHomeBinding.inflate(getLayoutInflater());
         setCustomView(binding.getRoot());
+
+        return getCustomView();
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        sessionManager = new SessionManager(requireContext());
         // Inicialización de la base de datos y conexión
         projectsList = new ArrayList<>();
         RecyclerView rv = binding.rvProjects;
 
         dao = new ProjectDao(getContext());
         presenter = new HomePresenter(new listenerPresenter(), dao, getContext());
-        sessionManager = new SessionManager(requireContext());
 
         adapter = new RecyclerAdapterProducts(getContext(), projectsList, new listenerAdapter());
         rv.setHasFixedSize(true);
@@ -54,12 +62,6 @@ public class HomeFragment extends BaseFragment {
 
         displaySesion();
         textSearchProduct();
-        return getCustomView();
-    }
-
-    @Override
-    public void onResume() {
-        super.onResume();
         presenter.getAllProjectsSuccess();
         binding.ivLogout.setOnClickListener(v -> {
             sessionManager.logout();
@@ -142,5 +144,6 @@ public class HomeFragment extends BaseFragment {
     public void onDestroy() {
         super.onDestroy();
         dao.closeDb();
+
     }
 }
