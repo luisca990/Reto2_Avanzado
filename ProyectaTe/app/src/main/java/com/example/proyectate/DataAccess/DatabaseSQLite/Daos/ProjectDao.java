@@ -66,7 +66,7 @@ public class ProjectDao {
     public boolean deleteProject(int projectId) {
         // Verificación del ID del producto
         if (projectId <= 0) {
-            Log.e("Database", "ID del producto no válido.");
+            Log.e("Database", "ID del proyecto no válido.");
             return false;
         }
 
@@ -79,16 +79,16 @@ public class ProjectDao {
         try {
             count = db.delete(TABLE_PROJECTS, selection, selectionArgs);
         } catch (Exception e) {
-            Log.e("Database", "Error al eliminar el producto: " + e.getMessage());
+            Log.e("Database", "Error al eliminar el proyecto: " + e.getMessage());
             return false; // Indica que la eliminación no se realizó correctamente
         }
 
         // Si la eliminación fue exitosa, devolver true
         if (count > 0) {
-            Log.d("Database", "Producto eliminado con ID: " + projectId);
+            Log.d("Database", "Proyecto eliminado con ID: " + projectId);
             return true;
         } else {
-            Log.e("Database", "No se eliminó ninguna fila para el producto con ID: " + projectId);
+            Log.e("Database", "No se eliminó ninguna fila para el proyecto con ID: " + projectId);
             return false; // Indica que la eliminación no se realizó correctamente
         }
     }

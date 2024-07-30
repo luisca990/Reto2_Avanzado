@@ -49,10 +49,10 @@
     <string name="admin">admin</string>
     <string name="fiels_vacio">Campos Vacios</string>
     <string name="mess_fiels_vacio">Todos los campos deben estar llenos, verifica.</string>
-    <string name="actualizar_producto">Actualizar Producto</string>
+    <string name="actualizar_producto">Actualizar Proyecto</string>
     <string name="insertar_usuario">Insertar usuario</string>
-    <string name="insert_user">"Se inserto correctamente el producto con el id: "</string>
-    <string name="update_user">"Se actualizo correctamente el producto con el id: "</string>
+    <string name="insert_user">"Se inserto correctamente el proyecto con el id: "</string>
+    <string name="update_user">"Se actualizo correctamente el proyecto con el id: "</string>
     <string name="update_usuario">Actualizar Proyecto</string>
     <string name="save">Guardar</string>
     <string name="delete_product">Eliminación</string>
@@ -75,8 +75,8 @@
     <string name="date_end">Seleccionar Fecha Final</string>
     <string name="no_esta_logueado">" no esta logueado"</string>
     <string name="permiso_denegado">Permiso denegado</string>
-    <string name="text_delete">"Se elimino correctamente el producto: "</string>
-    <string name="no_text_delete">No se elimino correctamente el producto, hubo un error</string>
+    <string name="text_delete">"Se elimino correctamente el proyecto: "</string>
+    <string name="no_text_delete">No se elimino correctamente el proyecto, hubo un error</string>
     <string name="title">Title</string>
     <string name="not_internet">No hay conexión a internet</string>
     <string name="error_user_db">Error User DB</string>
