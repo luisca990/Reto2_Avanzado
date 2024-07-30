@@ -45,7 +45,7 @@ public class UserDao {
     @SuppressLint("Range")
     public long getUserIdByEmail(String email) {
         long userId = -1;
-        try (Cursor cursor = db.query(TABLE_USERS, new String[]{"id"}, "correo = ?", new String[]{email}, null, null, null)) {
+        try (Cursor cursor = db.query(TABLE_USERS, new String[]{"id"}, "email = ?", new String[]{email}, null, null, null)) {
             // Consulta para buscar el usuario por correo
             if (cursor != null && cursor.moveToFirst()) {
                 userId = cursor.getLong(cursor.getColumnIndex("id"));
