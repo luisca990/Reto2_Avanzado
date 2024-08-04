@@ -1,57 +1,52 @@
 package com.example.proyectate.Presentation.Dash.ManageProduct.DetailAdmin.Implementations;
 
-import static com.example.proyectate.Utils.Util.convertImageService;
-
 import android.annotation.SuppressLint;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.ImageView;
-import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
 import androidx.navigation.Navigation;
-
 import com.example.proyectate.Base.BaseFragment;
-import com.example.proyectate.DataAccess.DatabaseSQLite.Daos.ProductDao;
-import com.example.proyectate.DataAccess.SharedPreferences.SessionManager;
-import com.example.proyectate.Models.Product;
+import com.example.proyectate.DataAccess.DatabaseSQLite.Daos.ProjectDao;
+import com.example.proyectate.Models.Project;
 import com.example.proyectate.Presentation.Dash.ManageProduct.DetailAdmin.Interfaces.IDetailView;
 import com.example.proyectate.R;
 import com.example.proyectate.Utils.Constants;
+import com.example.proyectate.Utils.CustomDialogFragment;
 import com.example.proyectate.Utils.DialogueGenerico;
+import com.example.proyectate.databinding.FragmentDetailBinding;
 
-import java.util.Objects;
+import java.io.FileNotFoundException;
+import java.io.InputStream;
 
 public class DetailFragment extends BaseFragment {
     private DetailPresenter presenter;
-    private Product product;
-    private ImageView arrow, image;
-    private TextView name, description, count, valor;
-    private Button delete, update;
-    private ProductDao dao;
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        setCustomView(inflater.inflate(R.layout.fragment_detail, container, false));
-        image = getCustomView().findViewById(R.id.iv_image_detail);
-        arrow = getCustomView().findViewById(R.id.iv_back_detail);
-        name = getCustomView().findViewById(R.id.tv_name_detail);
-        description = getCustomView().findViewById(R.id.tv_descript_detail);
-        count = getCustomView().findViewById(R.id.tv_count_detail);
-        valor = getCustomView().findViewById(R.id.tv_valor_detail);
-        delete = getCustomView().findViewById(R.id.btn_delete_section);
-        update = getCustomView().findViewById(R.id.btn_update_section);
+    private Project project;
+    private ProjectDao dao;
+    private FragmentDetailBinding binding;
 
-        dao = new ProductDao(getContext());
+    @RequiresApi(api = Build.VERSION_CODES.TIRAMISU)
+    @Override
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        binding = FragmentDetailBinding.inflate(getLayoutInflater());
+        setCustomView(binding.getRoot());
+
+        dao = new ProjectDao(getContext());
         presenter = new DetailPresenter(new listenerPresenter(), dao);
 
         if (getArguments() != null) {
-            Product item = getArguments().getParcelable("product", Product.class);
+            Project item = getArguments().getParcelable(Constants.Tag.PROJECT);
             if (item != null) {
-                this.product = item; // Show character details immediately
+                this.project = item;
             }
         }
         return getCustomView();
@@ -60,36 +55,34 @@ public class DetailFragment extends BaseFragment {
     @Override
     public void onResume() {
         super.onResume();
-        update.setOnClickListener(v->{
+        binding.btnUpdateSection.setOnClickListener(v->{
             Bundle bundle = new Bundle();
-            bundle.putParcelable("product", product);
-            Navigation.findNavController(requireView()).navigate(R.id.action_detailFragment_to_addUpdateFragment, bundle);
-            Toast.makeText(getContext(), "update", Toast.LENGTH_SHORT).show();});
-        delete.setOnClickListener(v->{
-            Toast.makeText(getContext(), "delete", Toast.LENGTH_SHORT).show();
-            presenter.deleteProduct(product);
-        });
-        arrow.setOnClickListener(v->{
-            SessionManager sessionManager = new SessionManager(requireContext());
-            Bundle bundle = new Bundle();
-            if ((Objects.equals(sessionManager.getUserEmail(), Constants.Tag.ADMIN))) {
-                bundle.putString(Constants.Tag.USER, "admin");
-            } else {
-                bundle.putString(Constants.Tag.USER, "client");
-            }
-            Navigation.findNavController(requireView()).navigate(R.id.action_detailFragment_to_homeFragment, bundle);
-        });
+            bundle.putParcelable(Constants.Tag.PROJECT, project);
+            Navigation.findNavController(requireView()).navigate(R.id.action_detailFragment_to_addUpdateFragment, bundle);});
+        binding.btnDeleteSection.setOnClickListener(v-> showCustomDialog());
+        binding.ivBackDetail.setOnClickListener(v-> Navigation.findNavController(requireView()).navigate(R.id.action_detailFragment_to_homeFragment));
         completeProductData();
     }
 
     @SuppressLint("SetTextI18n")
     private void completeProductData(){
-        if (product != null){
-            convertImageService(product.getImage(), image, 300);
-            name.setText(product.getNombre());
-            description.setText(product.getDescripcion());
-            count.setText(product.getCantidad().toString());
-            valor.setText(product.getPrecio().toString());
+        if (project != null){
+            try {
+                Uri uri = Uri.parse(project.getImage());
+                InputStream inputStream = requireContext().getContentResolver().openInputStream(uri);
+                Bitmap bitmap = BitmapFactory.decodeStream(inputStream);
+                binding.ivImageDetail.setImageBitmap(bitmap);
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+                // Puedes manejar errores aquí, por ejemplo, mostrar una imagen de error.
+            } catch (Exception e) {
+                e.printStackTrace();
+                // Puedes manejar errores aquí, por ejemplo, mostrar una imagen de error.
+            }
+            binding.tvTitle.setText(project.getTitle());
+            binding.tvDescriptDetail.setText(project.getDescription());
+            binding.dateEnd.setText(project.getDateEnd());
+            binding.dateInit.setText(project.getDateInit());
         }
     }
 
@@ -97,10 +90,10 @@ public class DetailFragment extends BaseFragment {
         @Override
         public void showDeleteProduct(Boolean delete, String name) {
             if (delete){
-                dialogueFragment(R.string.delete_product, "Se elimino correctamente el producto: "+name, DialogueGenerico.TypeDialogue.OK);
+                dialogueFragment(R.string.delete_product, getString(R.string.text_delete)+name, DialogueGenerico.TypeDialogue.OK);
                 Navigation.findNavController(requireView()).navigateUp();
             }else {
-                dialogueFragment(R.string.delete_product, "No se elimino correctamente el producto, hubo un error", DialogueGenerico.TypeDialogue.OK);
+                dialogueFragment(R.string.delete_product, getString(R.string.no_text_delete), DialogueGenerico.TypeDialogue.OK);
             }
         }
     }
@@ -108,5 +101,20 @@ public class DetailFragment extends BaseFragment {
     public void onDestroy() {
         super.onDestroy();
         dao.closeDb();
+    }
+
+    public void showCustomDialog() {
+        CustomDialogFragment dialog = new CustomDialogFragment(
+                "¿Seguro que quieres Eliminar?",
+                "",
+                () -> {
+                    // Manejar evento de "Aceptar"
+                    presenter.deleteProduct(project);
+                },
+                () -> {
+                    Toast.makeText(getContext(), "Esta bien no se elimina", Toast.LENGTH_SHORT).show();
+                }
+        );
+        dialog.show(requireActivity().getSupportFragmentManager(), "CustomDialogFragment");
     }
 }

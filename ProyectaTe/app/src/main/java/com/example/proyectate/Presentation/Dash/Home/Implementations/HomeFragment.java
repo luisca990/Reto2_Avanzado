@@ -6,26 +6,22 @@ import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.EditText;
-import android.widget.ImageView;
-import android.widget.TextView;
 import android.widget.Toast;
+import androidx.annotation.NonNull;
 import androidx.navigation.Navigation;
-import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import com.example.proyectate.Base.BaseFragment;
-import com.example.proyectate.DataAccess.DatabaseSQLite.Daos.PedidoDao;
-import com.example.proyectate.DataAccess.DatabaseSQLite.Daos.ProductDao;
+import com.example.proyectate.DataAccess.DatabaseSQLite.Daos.ProjectDao;
 import com.example.proyectate.DataAccess.SharedPreferences.SessionManager;
-import com.example.proyectate.Models.Pedido;
-import com.example.proyectate.Models.Product;
+import com.example.proyectate.Models.Project;
 import com.example.proyectate.Presentation.Dash.Home.Adapter.OnItemClickListenerProduct;
 import com.example.proyectate.Presentation.Dash.Home.Adapter.RecyclerAdapterProducts;
 import com.example.proyectate.Presentation.Dash.Home.Interfaces.IHomeView;
 import com.example.proyectate.R;
 import com.example.proyectate.Utils.Constants;
 import com.example.proyectate.Utils.DialogueGenerico;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.example.proyectate.databinding.FragmentHomeBinding;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -33,87 +29,61 @@ import java.util.List;
 public class HomeFragment extends BaseFragment {
     private HomePresenter presenter;
     private SessionManager sessionManager;
-    private List<Product> productsList;
+    private List<Project> projectsList;
     private RecyclerAdapterProducts adapter;
-    private EditText search;
-    private TextView shopping;
-    private ImageView logout;
-    private FloatingActionButton fabAdd, fabCar, fabHistory;
-    private ProductDao dao;
-    private PedidoDao daoP;
-    private String typeUser;
-    private Pedido cartPedido = new Pedido();
+    private ProjectDao dao;
+    private FragmentHomeBinding binding;
+    private boolean isFirebase = false;
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        setCustomView(inflater.inflate(R.layout.fragment_home, container, false));
+        binding = FragmentHomeBinding.inflate(getLayoutInflater());
+        setCustomView(binding.getRoot());
+
         // Inicialización de la base de datos y conexión
-        productsList = new ArrayList<>();
-        RecyclerView rv = getCustomView().findViewById(R.id.rvProducts);
-        search = getCustomView().findViewById(R.id.searchView);
-        logout = getCustomView().findViewById(R.id.iv_logout);
-        fabAdd = getCustomView().findViewById(R.id.fab_add);
-        fabCar = getCustomView().findViewById(R.id.fab_buy);
-        fabHistory = getCustomView().findViewById(R.id.fab_history);
-        shopping = getCustomView().findViewById(R.id.notification_badge);
+        projectsList = new ArrayList<>();
+        RecyclerView rv = binding.rvProjects;
 
-        dao = new ProductDao(getContext());
-        daoP = new PedidoDao(getContext());
-        presenter = new HomePresenter(new listenerPresenter(), dao, daoP);
-        sessionManager = new SessionManager(requireContext());
+        dao = new ProjectDao(getContext());
+        presenter = new HomePresenter(new listenerPresenter(), dao, getContext());
 
-        adapter = new RecyclerAdapterProducts(getContext(), productsList, new listenerAdapter());
+        adapter = new RecyclerAdapterProducts(getContext(), projectsList, new listenerAdapter());
         rv.setHasFixedSize(true);
-        rv.setLayoutManager(new GridLayoutManager(getContext(), 2, RecyclerView.VERTICAL, false));
+        rv.setLayoutManager(new LinearLayoutManager(getContext(), RecyclerView.VERTICAL, false));
         rv.setAdapter(adapter);
-        if (getArguments() != null) {
-             typeUser = getArguments().getString(Constants.Tag.USER);
-        }
 
-        isVisibleButons();
-        displaySesion();
-        textSearchProduct();
         return getCustomView();
     }
 
     @Override
     public void onResume() {
         super.onResume();
-        presenter.getAllProductsSuccess();
-        presenter.getLastPedidoByUserId(sessionManager.getUseId());
-        logout.setOnClickListener(v -> {
+        sessionManager = new SessionManager(requireContext());
+        displaySesion();
+        textSearchProduct();
+        presenter.getAllProjectsSuccess();
+        binding.ivLogout.setOnClickListener(v -> {
             sessionManager.logout();
             Toast.makeText(getContext(), getString(R.string.el_usuario)+sessionManager.getUserEmail()+getString(R.string.se_deslogueo), Toast.LENGTH_SHORT).show();
             Navigation.findNavController(requireView()).navigate(R.id.action_homeFragment_to_loginFragment);
         });
-        fabAdd.setOnClickListener(v-> Navigation.findNavController(requireView()).navigate(R.id.action_homeFragment_to_addUpdateFragment));
-        fabCar.setOnClickListener(v->{
-            if(cartPedido.getListProduct().isEmpty()){
-                dialogueFragment(R.string.shopping, getString(R.string.no_shopping), DialogueGenerico.TypeDialogue.ADVERTENCIA);
-                return;
-            }
-            Bundle bundle = new Bundle();
-            bundle.putParcelable("pedido", cartPedido);
-            Navigation.findNavController(requireView()).navigate(R.id.action_homeFragment_to_shoppingCartFragment, bundle);
+        binding.fabAdd.setOnClickListener(v-> Navigation.findNavController(requireView()).navigate(R.id.action_homeFragment_to_addUpdateFragment));
+        binding.fabSynchronize.setOnClickListener(v-> presenter.synchronizeData(projectsList));
+        binding.fabFirebase.setOnClickListener(v-> {
+            isFirebase = true;
+            presenter.getProjectsFirebase();
         });
-        fabHistory.setOnClickListener(v-> Navigation.findNavController(requireView()).navigate(R.id.action_homeFragment_to_historyFragment));
     }
-    private void isVisibleButons() {
-        if (!typeUser.equals(getString(R.string.admin))) {
-            fabAdd.setVisibility(View.INVISIBLE);
-        }else {
-            fabCar.setVisibility(View.INVISIBLE);
-            fabHistory.setVisibility(View.INVISIBLE);
-        }
-    }
+
     private void displaySesion(){
         if (!sessionManager.isLoggedIn()) {
             Navigation.findNavController(requireView()).navigate(R.id.action_homeFragment_to_loginFragment);
-            Toast.makeText(getContext(), "El usuario " + sessionManager.getUserEmail() + " no esta logueado", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getContext(), getString(R.string.el_usuario) + sessionManager.getUserEmail() + getString(R.string.no_esta_logueado), Toast.LENGTH_SHORT).show();
         }
     }
+
     private void textSearchProduct(){
-        search.addTextChangedListener(new TextWatcher() {
+        binding.searchView.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
 
@@ -122,7 +92,7 @@ public class HomeFragment extends BaseFragment {
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
                 if(s.toString().isEmpty()){
-                    adapter.updateList(productsList);
+                    adapter.updateList(projectsList);
                     hideKeyboardFragment();
                     return;
                 }
@@ -135,41 +105,44 @@ public class HomeFragment extends BaseFragment {
             }
         });
     }
+
     private class listenerPresenter implements IHomeView{
         @Override
-        public void showGetAllProductsSuccess(List<Product> products) {
-            productsList = products;
-            adapter.updateList(products);
+        public void showGetAllProductsSuccess(List<Project> projects) {
+            if (isFirebase && projects.isEmpty()){
+                Toast.makeText(getContext(), "No tienes projectos sincronizados en Firebase", Toast.LENGTH_SHORT).show();
+                isFirebase = false;
+                presenter.getAllProjectsSuccess();
+                return;
+            }
+            if (isFirebase) {
+                binding.textView.setText(getText(R.string.title_home_firebase));
+                isFirebase = false;
+            } else {
+                binding.textView.setText(getText(R.string.title_home_local));
+            }
+            projectsList = projects;
+            adapter.updateList(projects);
         }
 
         @Override
-        public void showGetLastPedidoSuccess(Pedido pedido) {
-            if (pedido == null || pedido.getListProduct().isEmpty()){
-                shopping.setVisibility(View.INVISIBLE);
-            }else {
-                cartPedido = pedido;
-                shopping.setVisibility(View.VISIBLE);
-                shopping.setText(String.valueOf(pedido.getListProduct().size()));
-            }
+        public void showDialogFragment(int title, String detail, DialogueGenerico.TypeDialogue type) {
+            dialogueFragment(title, detail, type);
         }
     }
 
     private class listenerAdapter implements OnItemClickListenerProduct {
         @Override
-        public void onItemClick(Product product) {
+        public void onItemClick(Project project) {
             Bundle bundle = new Bundle();
-            bundle.putParcelable("product", product);
-            if (typeUser.equals("admin")) {
-                Navigation.findNavController(requireView()).navigate(R.id.action_homeFragment_to_detailFragment, bundle);
-            }else {
-                Navigation.findNavController(requireView()).navigate(R.id.action_homeFragment_to_detailClientFragment, bundle);
-            }
+            bundle.putParcelable(Constants.Tag.PROJECT, project);
+            Navigation.findNavController(requireView()).navigate(R.id.action_homeFragment_to_detailFragment, bundle);
         }
     }
     @Override
     public void onDestroy() {
         super.onDestroy();
         dao.closeDb();
-        daoP.closeDb();
+
     }
 }

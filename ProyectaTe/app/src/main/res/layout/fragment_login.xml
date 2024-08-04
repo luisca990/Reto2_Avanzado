@@ -12,7 +12,8 @@
         android:layout_width="@dimen/_300dp"
         android:layout_height="@dimen/_300dp"
         android:layout_marginTop="70dp"
-        android:src="@mipmap/ic_logo_appetit"
+        android:importantForAccessibility="no"
+        android:src="@mipmap/ic_logo_app"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -35,7 +36,7 @@
             android:layout_height="wrap_content"
             android:gravity="center"
             android:text="@string/init_section"
-            android:textColor="@color/black"
+            android:textColor="@color/colorPrimary"
             android:textSize="@dimen/_35sp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
@@ -66,14 +67,15 @@
                 android:layout_height="56dp"
                 android:layout_gravity="center"
                 android:layout_marginStart="@dimen/_10dp"
-                android:paddingLeft="@dimen/_10dp"
+                android:paddingStart="@dimen/_10dp"
                 android:layout_marginEnd="@dimen/_10dp"
                 android:background="@drawable/edt_email"
                 android:hint="@string/Email"
                 android:importantForAutofill="no"
                 android:inputType="textEmailAddress"
                 android:textColor="@color/black"
-                android:textColorHint="@color/black"/>
+                android:textColorHint="@color/black"
+                tools:ignore="RtlSymmetry" />
 
         </LinearLayout>
 
@@ -101,7 +103,7 @@
                 android:layout_gravity="center"
                 android:layout_marginStart="@dimen/_10dp"
                 android:layout_marginEnd="@dimen/_10dp"
-                android:paddingLeft="@dimen/_10dp"
+                android:paddingStart="@dimen/_10dp"
                 android:background="@drawable/edt_email"
                 android:digits="@string/CaracteresPass"
                 android:hint="@string/password"
@@ -109,7 +111,8 @@
                 android:inputType="textPassword"
                 android:maxLength="10"
                 android:textColor="@color/black"
-                android:textColorHint="@color/black" />
+                android:textColorHint="@color/black"
+                tools:ignore="RtlSymmetry" />
 
         </LinearLayout>
 

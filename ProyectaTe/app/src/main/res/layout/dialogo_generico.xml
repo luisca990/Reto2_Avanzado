@@ -50,7 +50,7 @@
                 android:background="@drawable/btn_general"
                 android:text="@string/btn_aceptar"
                 android:textAllCaps="false"
-                android:textColor="@color/colorPrimaryAccessDark"
+                android:textColor="@color/white"
                 android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@+id/line_dialog"

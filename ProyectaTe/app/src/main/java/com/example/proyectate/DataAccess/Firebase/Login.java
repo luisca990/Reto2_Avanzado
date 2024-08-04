@@ -7,13 +7,14 @@ import com.example.proyectate.Models.User;
 import com.example.proyectate.R;
 import com.example.proyectate.Utils.Constants;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 public class Login {
-    private final Runnable messageSuccess;
+    private final OnLoginSuccessListener messageSuccess;
     private final Runnable failure;
     private final Context context;
 
-    public Login(Context context, Runnable messageSuccess, Runnable failure) {
+    public Login(Context context, OnLoginSuccessListener messageSuccess, Runnable failure) {
         this.messageSuccess = messageSuccess;
         this.failure = failure;
         this.context = context;
@@ -24,7 +25,11 @@ public class Login {
         instanceFirebase.signInWithEmailAndPassword(user.getEmail(), user.getPassword())
                 .addOnCompleteListener(task -> {
                     if (task.isSuccessful()) {
-                        messageSuccess.run();
+                        FirebaseUser firebaseUser = instanceFirebase.getCurrentUser();
+                        if (firebaseUser != null) {
+                            user.setId(firebaseUser.getUid());
+                        }
+                        messageSuccess.onLoginSuccess(user);
                         return;
                     }
                     Log.e(Constants.Tag.LOGIN, context.getString(R.string.firebase_login), task.getException());
@@ -37,7 +42,7 @@ public class Login {
         instanceFirebase.createUserWithEmailAndPassword(user.getEmail(), user.getPassword())
                 .addOnCompleteListener(task -> {
                     if (task.isSuccessful()) {
-                        messageSuccess.run();
+                        messageSuccess.onLoginSuccess(user);
                         return;
                     }
                     Log.e(Constants.Tag.REGISTER, context.getString(R.string.firebase_register), task.getException());

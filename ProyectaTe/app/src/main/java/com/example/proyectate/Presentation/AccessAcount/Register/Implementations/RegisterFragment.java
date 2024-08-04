@@ -4,12 +4,10 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.EditText;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.navigation.Navigation;
-
 import com.example.proyectate.Base.BaseFragment;
 import com.example.proyectate.Models.MessageResponse;
 import com.example.proyectate.Models.User;
@@ -17,24 +15,19 @@ import com.example.proyectate.Presentation.AccessAcount.Register.Interfaces.IReg
 import com.example.proyectate.Presentation.AccessAcount.Register.Interfaces.IRegisterUserView;
 import com.example.proyectate.R;
 import com.example.proyectate.Utils.DialogueGenerico;
+import com.example.proyectate.databinding.FragmentRegisterBinding;
 
 
 public class RegisterFragment extends BaseFragment {
 
     private IRegisterUserPresenter presenter;
     private final IRegisterUserView actionPresenter = new ActionViewPresenter();
-    private EditText editEmail;
-    private EditText editPass;
-    private EditText editConfirPass;
-    private Button btnCreate;
+    private FragmentRegisterBinding binding;
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        setCustomView(inflater.inflate(R.layout.fragment_register, container, false));
-        editEmail = getCustomView().findViewById(R.id.et_email_register);
-        editPass = getCustomView().findViewById(R.id.et_pass_register);
-        editConfirPass = getCustomView().findViewById(R.id.et_conf_pass_register);
-        btnCreate = getCustomView().findViewById(R.id.btnCrear_register);
+        binding = FragmentRegisterBinding.inflate(getLayoutInflater());
+        setCustomView(binding.getRoot());
 
         presenter = new RegisterUserPresenter(getContext(), actionPresenter);
 
@@ -43,11 +36,11 @@ public class RegisterFragment extends BaseFragment {
     @Override
     public void onResume() {
         super.onResume();
-        btnCreate.setOnClickListener(v -> {
+        binding.btnCrearRegister.setOnClickListener(v -> {
             User user = new User();
-            user.setEmail(editEmail.getText().toString());
-            user.setPassword(editPass.getText().toString());
-            user.setConfPassword(editConfirPass.getText().toString());
+            user.setEmail(binding.etEmailRegister.getText().toString());
+            user.setPassword(binding.etPassRegister.getText().toString());
+            user.setConfPassword(binding.etConfPassRegister.getText().toString());
             presenter.registerUser(user);
         });
     }
