@@ -1,7 +1,7 @@
-package com.example.proyectate.DataAccess.DatabaseSQLite.helper;
+package com.example.proyectate.DataAccess.Firebase;
 
-import com.example.proyectate.DataAccess.DatabaseSQLite.helper.interfaces.OnProjectsLoadedListener;
-import com.example.proyectate.DataAccess.DatabaseSQLite.helper.interfaces.onListenerCallback;
+import com.example.proyectate.DataAccess.Firebase.interfaces.OnProjectsLoadedListener;
+import com.example.proyectate.DataAccess.Firebase.interfaces.onListenerCallback;
 import com.example.proyectate.Models.Project;
 import com.example.proyectate.Utils.Constants;
 import com.google.firebase.firestore.FirebaseFirestore;

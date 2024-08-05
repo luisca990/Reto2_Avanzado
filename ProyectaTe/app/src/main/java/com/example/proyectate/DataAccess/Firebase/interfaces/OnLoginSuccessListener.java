@@ -1,4 +1,4 @@
-package com.example.proyectate.DataAccess.Firebase;
+package com.example.proyectate.DataAccess.Firebase.interfaces;
 
 import com.example.proyectate.Models.User;
 
