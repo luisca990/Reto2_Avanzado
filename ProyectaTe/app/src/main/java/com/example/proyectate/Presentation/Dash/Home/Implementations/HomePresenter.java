@@ -6,8 +6,8 @@ import android.content.Context;
 import android.widget.Toast;
 
 import com.example.proyectate.DataAccess.DatabaseSQLite.Daos.ProjectDao;
-import com.example.proyectate.DataAccess.DatabaseSQLite.helper.FirebaseHelper;
-import com.example.proyectate.DataAccess.DatabaseSQLite.helper.interfaces.onListenerCallback;
+import com.example.proyectate.DataAccess.Firebase.FirebaseHelper;
+import com.example.proyectate.DataAccess.Firebase.interfaces.onListenerCallback;
 import com.example.proyectate.DataAccess.SharedPreferences.SessionManager;
 import com.example.proyectate.Models.Project;
 import com.example.proyectate.Presentation.Dash.Home.Interfaces.GetProjectsListener;

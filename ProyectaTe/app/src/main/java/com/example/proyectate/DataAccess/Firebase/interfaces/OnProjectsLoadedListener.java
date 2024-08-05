@@ -1,4 +1,4 @@
-package com.example.proyectate.DataAccess.DatabaseSQLite.helper.interfaces;
+package com.example.proyectate.DataAccess.Firebase.interfaces;
 
 import com.example.proyectate.Models.Project;
 

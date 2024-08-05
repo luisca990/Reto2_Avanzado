@@ -4,9 +4,9 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import androidx.annotation.NonNull;
 import com.example.proyectate.DataAccess.DatabaseSQLite.Daos.ProjectDao;
-import com.example.proyectate.DataAccess.DatabaseSQLite.helper.FirebaseHelper;
-import com.example.proyectate.DataAccess.DatabaseSQLite.helper.interfaces.OnProjectsLoadedListener;
-import com.example.proyectate.DataAccess.DatabaseSQLite.helper.interfaces.onListenerCallback;
+import com.example.proyectate.DataAccess.Firebase.FirebaseHelper;
+import com.example.proyectate.DataAccess.Firebase.interfaces.OnProjectsLoadedListener;
+import com.example.proyectate.DataAccess.Firebase.interfaces.onListenerCallback;
 import com.example.proyectate.Presentation.Dash.Home.Interfaces.GetProjectsListener;
 import java.util.List;
 

@@ -1,4 +1,4 @@
-package com.example.proyectate.DataAccess.DatabaseSQLite.helper.interfaces;
+package com.example.proyectate.DataAccess.Firebase.interfaces;
 
 public interface onListenerCallback {
     void onSuccessChecked(boolean exists);
