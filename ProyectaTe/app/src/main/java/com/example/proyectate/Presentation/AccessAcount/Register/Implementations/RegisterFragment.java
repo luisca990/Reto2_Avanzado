@@ -15,6 +15,7 @@ import com.example.proyectate.Presentation.AccessAcount.Register.Interfaces.IReg
 import com.example.proyectate.Presentation.AccessAcount.Register.Interfaces.IRegisterUserView;
 import com.example.proyectate.R;
 import com.example.proyectate.Utils.DialogueGenerico;
+import com.example.proyectate.Utils.Util;
 import com.example.proyectate.databinding.FragmentRegisterBinding;
 
 
@@ -43,6 +44,8 @@ public class RegisterFragment extends BaseFragment {
             user.setConfPassword(binding.etConfPassRegister.getText().toString());
             presenter.registerUser(user);
         });
+        Util.validateEmailFormat(binding.etEmailRegister, binding.textFieldEmailRegister, getString(R.string.error_correo_formato));
+        Util.validateSizePassCharacters(binding.etPassRegister, binding.textFieldPassRegister);
     }
 
     private class ActionViewPresenter implements IRegisterUserView {

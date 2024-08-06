@@ -61,21 +61,23 @@
                 android:layout_marginEnd="@dimen/_10dp"
                 android:text="@string/Email"/>
 
-            <EditText
-                android:id="@+id/et_email_login"
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/textField_email"
                 android:layout_width="match_parent"
-                android:layout_height="56dp"
-                android:layout_gravity="center"
-                android:layout_marginStart="@dimen/_10dp"
-                android:paddingStart="@dimen/_10dp"
-                android:layout_marginEnd="@dimen/_10dp"
-                android:background="@drawable/edt_email"
+                android:layout_height="wrap_content"
                 android:hint="@string/Email"
-                android:importantForAutofill="no"
-                android:inputType="textEmailAddress"
-                android:textColor="@color/black"
-                android:textColorHint="@color/black"
-                tools:ignore="RtlSymmetry" />
+                android:layout_marginLeft="@dimen/_10dp"
+                android:layout_marginRight="@dimen/_10dp"
+                android:textColorHint="@color/black">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/et_email_login"
+                    android:layout_width="match_parent"
+                    android:layout_height="56dp"
+                    android:inputType="textEmailAddress"
+                    android:background="@drawable/edt_email"
+                    android:textColor="@color/black"/>
+            </com.google.android.material.textfield.TextInputLayout>
 
         </LinearLayout>
 

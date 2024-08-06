@@ -10,6 +10,7 @@ import com.google.firebase.firestore.SetOptions;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.atomic.AtomicInteger;
 
 public class FirebaseHelper {
     private final FirebaseFirestore db;
@@ -20,13 +21,17 @@ public class FirebaseHelper {
 
     // Método para sincronizar una lista de proyectos con Firestore
     public void syncProjects(List<Project> projects, onListenerCallback callback) {
+        AtomicInteger counter = new AtomicInteger(0);
         for (Project project : projects) {
-            checkProjectExists(project, new onListenerCallback() {
+            checkProjectExists(project, true, new onListenerCallback() {
                 @Override
                 public void onSuccessChecked(boolean exists) {
-                    callback.onSuccessChecked(exists);
-                    if(exists)return;
-                    addOrUpdateProject(project);
+                    if (!exists) {
+                        addOrUpdateProject(project);
+                    }
+                    if (counter.incrementAndGet() == projects.size()) {
+                        callback.onSuccessChecked(true);
+                    }
                 }
 
                 @Override
@@ -38,7 +43,7 @@ public class FirebaseHelper {
     }
 
     // Método para verificar si un proyecto existe
-    private void checkProjectExists(Project project, onListenerCallback callback) {
+    public void checkProjectExists(Project project, Boolean isAdd, onListenerCallback callback) {
         db.collection(Constants.TABLE_PROJECTS)
                 .whereEqualTo("title", project.getTitle())
                 .get()
@@ -48,7 +53,7 @@ public class FirebaseHelper {
                         for (QueryDocumentSnapshot document : task.getResult()) {
                             if (document.exists()) {
                                 exists = true;
-                                deleteProjectById(project);
+                                deleteProjectById(project, isAdd);
                                 break; // Si encuentras al menos uno, puedes detener la búsqueda
                             }
                         }
@@ -73,13 +78,13 @@ public class FirebaseHelper {
     }
 
     // Método para agregar o actualizar un proyecto
-    private void deleteProjectById(Project project) {
+    private void deleteProjectById(Project project, Boolean isAdd) {
         db.collection(Constants.TABLE_PROJECTS)
                 .document(String.valueOf(project.getId()))
                 .delete()
                 .addOnSuccessListener(aVoid -> {
                     // Proyecto eliminado con éxito
-                    addOrUpdateProject(project);
+                    if (isAdd) addOrUpdateProject(project);
                 })
                 .addOnFailureListener(e -> {
                     // Error al eliminar el proyecto

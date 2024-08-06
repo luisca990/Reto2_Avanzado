@@ -66,5 +66,6 @@
     <string name="error_user_db">Error User DB</string>
     <string name="sincronizacion">Sincronización</string>
     <string name="sincronizacion_exitosa">Sincronización Exitosa</string>
+    <string name="error_correo_formato">Formato de correo electrónico inválido</string>
 
 </resources>

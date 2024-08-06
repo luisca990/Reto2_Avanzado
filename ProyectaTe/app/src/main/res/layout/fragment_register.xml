@@ -64,19 +64,22 @@
                 android:layout_marginStart="@dimen/_10dp"
                 android:layout_marginEnd="@dimen/_10dp"
                 android:text="@string/Email"/>
-            <EditText
-                android:id="@+id/et_email_register"
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/textField_email_register"
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/_56dp"
-                android:layout_gravity="center"
-                android:background="@drawable/edt_email"
-                android:gravity="center"
+                android:layout_height="wrap_content"
                 android:hint="@string/Email"
-                android:importantForAutofill="no"
-                android:inputType="textEmailAddress"
-                android:textColor="@color/black"
-                android:textColorHint="@color/black"
-                android:textCursorDrawable="@drawable/cursor_general" />
+                android:textColorHint="@color/black">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/et_email_register"
+                    android:layout_width="match_parent"
+                    android:layout_height="56dp"
+                    android:inputType="textEmailAddress"
+                    android:background="@drawable/edt_email"
+                    android:textColor="@color/black"/>
+            </com.google.android.material.textfield.TextInputLayout>
 
         </LinearLayout>
 
@@ -99,20 +102,22 @@
                 android:layout_marginStart="@dimen/_10dp"
                 android:layout_marginEnd="@dimen/_10dp"
                 android:text="@string/password"/>
-            <EditText
-                android:id="@+id/et_pass_register"
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/textField_pass_register"
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/_56dp"
-                android:layout_gravity="center"
-                android:background="@drawable/edt_email"
-                android:ems="10"
-                android:gravity="center"
+                android:layout_height="wrap_content"
                 android:hint="@string/password"
-                android:importantForAutofill="no"
-                android:inputType="textPassword"
-                android:textColor="@color/black"
-                android:textColorHint="@color/black"
-                android:textCursorDrawable="@drawable/cursor_general" />
+                android:textColorHint="@color/black">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/et_pass_register"
+                    android:layout_width="match_parent"
+                    android:layout_height="56dp"
+                    android:inputType="textEmailAddress"
+                    android:background="@drawable/edt_email"
+                    android:textColor="@color/black"/>
+            </com.google.android.material.textfield.TextInputLayout>
 
         </LinearLayout>
 
