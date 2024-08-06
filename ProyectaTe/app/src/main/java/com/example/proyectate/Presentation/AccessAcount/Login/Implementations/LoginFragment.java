@@ -13,6 +13,7 @@ import com.example.proyectate.Presentation.AccessAcount.Login.Interfaces.ILoginP
 import com.example.proyectate.Presentation.AccessAcount.Login.Interfaces.ILoginView;
 import com.example.proyectate.R;
 import com.example.proyectate.Utils.DialogueGenerico;
+import com.example.proyectate.Utils.Util;
 import com.example.proyectate.databinding.FragmentLoginBinding;
 
 public class LoginFragment extends BaseFragment {
@@ -32,8 +33,9 @@ public class LoginFragment extends BaseFragment {
 
     @Override
     public void onResume() {
-        presenter = new LoginPresenter(requireContext(), actionPresenter);
         super.onResume();
+        presenter = new LoginPresenter(requireContext(), actionPresenter);
+        Util.validateEmailFormat(binding.etEmailLogin, binding.textFieldEmail, getString(R.string.error_correo_formato));
         binding.btnStartSection.setOnClickListener(v->{
             user = new User();
             user.setEmail(binding.etEmailLogin.getText().toString());
