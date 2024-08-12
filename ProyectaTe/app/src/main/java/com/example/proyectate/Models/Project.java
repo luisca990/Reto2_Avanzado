@@ -4,9 +4,9 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import androidx.annotation.NonNull;
 import com.example.proyectate.DataAccess.DatabaseSQLite.Daos.ProjectDao;
-import com.example.proyectate.DataAccess.DatabaseSQLite.helper.FirebaseHelper;
-import com.example.proyectate.DataAccess.DatabaseSQLite.helper.interfaces.OnProjectsLoadedListener;
-import com.example.proyectate.DataAccess.DatabaseSQLite.helper.interfaces.onListenerCallback;
+import com.example.proyectate.DataAccess.Firebase.FirebaseHelper;
+import com.example.proyectate.DataAccess.Firebase.interfaces.OnProjectsLoadedListener;
+import com.example.proyectate.DataAccess.Firebase.interfaces.onListenerCallback;
 import com.example.proyectate.Presentation.Dash.Home.Interfaces.GetProjectsListener;
 import java.util.List;
 
@@ -78,7 +78,20 @@ public class Project implements Parcelable {
     //Metodos de consumos SQlite
     public int insertProject(ProjectDao dao){return (int) dao.insertProject(this);}
     public int updateProject(ProjectDao dao){return (int) dao.updateProject(this);}
-    public Boolean deleteProject(ProjectDao dao){return dao.deleteProject(id);}
+    public Boolean deleteProject(FirebaseHelper firebase, ProjectDao dao){
+        firebase.checkProjectExists(this, false, new onListenerCallback() {
+            @Override
+            public void onSuccessChecked(boolean exists) {
+
+            }
+
+            @Override
+            public void onError(Exception e) {
+
+            }
+        });
+        return dao.deleteProject(id);
+    }
     public static List<Project> getListProject(ProjectDao dao, String userId){return dao.getListProjects(userId);}
 
     //Metodos de Firebase

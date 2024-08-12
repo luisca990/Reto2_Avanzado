@@ -14,3 +14,10 @@
 Si el proyecto no les compila por gradle verificar archivos
 - Gradle-wrapper-properties : "distributionUrl=https\://services.gradle.org/distributions/gradle-8.8-bin.zip"
 - libs.versions : agp = "8.4.2"
+
+
+## Estructura del folder:
+### APK: directorio dónde está el APK de la aplicación.
+### Documentación: directorio que contiene el documento del entregable, el manual de usuario y una imagen con el diagrama de clases.
+### ProyectaTe: directorio que contiene el proyecto de código.
+

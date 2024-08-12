@@ -5,10 +5,17 @@ import android.app.DatePickerDialog;
 import android.content.Context;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
+import android.text.TextUtils;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
+import android.widget.EditText;
+import android.text.Editable;
+import android.text.TextWatcher;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
+
+import com.google.android.material.textfield.TextInputLayout;
+
 import java.util.Calendar;
 
 public class Util {
@@ -64,5 +71,43 @@ public class Util {
     public interface OnDateSelectedListener {
         void onDateSelected(String date, int type);
     }
+    public static void validateEmailFormat(EditText emailEditText, TextInputLayout textFieldEmail, String mess){
+        emailEditText.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
 
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {}
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                String email = s.toString().trim();
+                if (isValidEmail(email)) {
+                    textFieldEmail.setError(null);
+                } else {
+                    textFieldEmail.setError(mess);
+                }
+            }
+        });
+    }
+    private static boolean isValidEmail(String email) {
+        return !TextUtils.isEmpty(email) && android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches();
+    }
+    public static void validateSizePassCharacters(EditText passEditText, TextInputLayout textFieldPass) {
+        passEditText.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                String errorMessage = PasswordValidator.validatePassword(passEditText.getText().toString());
+                textFieldPass.setError(errorMessage);
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+            }
+        });
+    }
 }

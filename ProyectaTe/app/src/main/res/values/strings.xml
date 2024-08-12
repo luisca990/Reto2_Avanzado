@@ -34,19 +34,12 @@
     <string name="agregar_producto">Agregar Proyecto</string>
     <string name="imagen_url">Imagen (URL)</string>
     <string name="value">Value</string>
-    <string name="name">Tituló</string>
+    <string name="name">Título</string>
     <string name="descript">Descripción</string>
     <string name="details">Detalles</string>
-    <string name="count">"Cantidad: "</string>
-    <string name="precio_unitario">"Precio Unitario: "</string>
     <string name="update">Actualizar</string>
     <string name="delete">Eliminar</string>
-    <string name="add_car">Añadir al Carrito</string>
-    <string name="count_car">Cantidad</string>
-    <string name="shopping">Mi Carro de Compras</string>
     <string name="seleccionar_todo">Seleccionar Todo</string>
-    <string name="comprar">Comprar</string>
-    <string name="admin">admin</string>
     <string name="fiels_vacio">Campos Vacios</string>
     <string name="mess_fiels_vacio">Todos los campos deben estar llenos, verifica.</string>
     <string name="actualizar_producto">Actualizar Proyecto</string>
@@ -56,17 +49,8 @@
     <string name="update_usuario">Actualizar Proyecto</string>
     <string name="save">Guardar</string>
     <string name="delete_product">Eliminación</string>
-    <string name="rest_cantidad">No se puede disminuir mas la cantidad</string>
-    <string name="cantidad">"Cantidad Producto"</string>
-    <string name="stock">"Stock Producto: "</string>
-    <string name="cantidad_cero">La cantidad debe ser diferente de cero</string>
     <string name="el_usuario">"El usuario "</string>
     <string name="se_deslogueo">" se deslogueo"</string>
-    <string name="no_shopping">No tienes ningun producto en el carrito de compras</string>
-    <string name="monto_total">"Monto Total: "</string>
-    <string name="history">Historial de Pedidos</string>
-    <string name="cantidad_max">"La cantidad debe ser igual o menor a: "</string>
-    <string name="multiple_liness">Your long text goes here. It will wrap into multiple lines automatically.</string>
     <string name="text_default">Your long text goes here. It will wrap into multiple lines automatically.</string>
     <string name="_0">0</string>
     <string name="dateInit">Fecha Inicio</string>
@@ -82,5 +66,6 @@
     <string name="error_user_db">Error User DB</string>
     <string name="sincronizacion">Sincronización</string>
     <string name="sincronizacion_exitosa">Sincronización Exitosa</string>
+    <string name="error_correo_formato">Formato de correo electrónico inválido</string>
 
 </resources>
