@@ -1,0 +1,774 @@
+[33mcommit 76f22dec086750cfd713fcb0e4d8f63e89451c09[m[33m ([m[1;36mHEAD -> [m[1;32mlromero[m[33m)[m
+Author: Luis Romero <luisca990@gmail.com>
+Date:   Sun Aug 4 16:44:59 2024 -0500
+
+    Revert "Se agrega el diagrama de clases V3"
+    
+    This reverts commit 97090255ac50ceb5bdebe08785c425d6478fd0d2.
+
+[33mcommit 97090255ac50ceb5bdebe08785c425d6478fd0d2[m
+Author: Luis Romero <luisca990@gmail.com>
+Date:   Sun Aug 4 16:42:25 2024 -0500
+
+    Se agrega el diagrama de clases V3
+
+[33mcommit 79761cb57c3754009abe0e99e4213f6fe7252ec9[m
+Author: Luis Romero <luisca990@gmail.com>
+Date:   Sun Aug 4 16:34:18 2024 -0500
+
+    Se agrega el diagrama de clases 2
+
+[33mcommit 957f0bfb294ae0fd0c25320e5185ff2fa80a7190[m
+Author: Luis Romero <luisca990@gmail.com>
+Date:   Sun Aug 4 16:29:31 2024 -0500
+
+    Se agrega el diagrama de clases
+
+[33mcommit c7ebf1c439f9fa2190ab726fe66b57d9536f252f[m[33m ([m[1;31morigin/develop[m[33m)[m
+Merge: 0609cb0 f631af9
+Author: Luz Páez <95242204+LuzPaez@users.noreply.github.com>
+Date:   Mon Jul 29 22:31:37 2024 -0500
+
+    Merge pull request #11 from luisca990/mariza
+    
+    Mariza
+
+[33mcommit f631af95cf32abe2187856b1c155c8033b52005e[m
+Author: ErvidMolina89 <eralmoba@hotmail.com>
+Date:   Mon Jul 29 22:28:12 2024 -0500
+
+    Manejop de warning
+
+[33mcommit 08a53faea9eb124e8d03b9f90cfcf934a75e5cac[m
+Author: ErvidMolina89 <eralmoba@hotmail.com>
+Date:   Mon Jul 29 22:25:19 2024 -0500
+
+    Mejora en el manejo de Login Crear user y requerimiento de contexto en el home
+
+[33mcommit 0609cb0bae9ac75df5adfbda1b7e285fd840d8e0[m
+Merge: b299384 d343a22
+Author: luisca990 <34386325+luisca990@users.noreply.github.com>
+Date:   Mon Jul 29 20:35:29 2024 -0500
+
+    Merge pull request #10 from luisca990/lromero
+    
+    Se cambian los strings que hacian referencia a producto por proyecto
+
+[33mcommit d343a22e2e00f2e5a0c669ffd29111545b6a335c[m[33m ([m[1;31morigin/lromero[m[33m)[m
+Author: Luis Romero <luisca990@gmail.com>
+Date:   Mon Jul 29 20:30:32 2024 -0500
+
+    Se cambian los trings que hacian referencia a producto por proyecto
+
+[33mcommit b299384981335ddf211346ffd6112ace1a09dfee[m
+Merge: f6c5eda 03342ef
+Author: luisca990 <34386325+luisca990@users.noreply.github.com>
+Date:   Sun Jul 28 09:14:26 2024 -0500
+
+    Merge pull request #9 from luisca990/mariza
+    
+    Mariza
+
+[33mcommit f6c5eda9d3f3945ff79f77202323783e0b880a26[m
+Merge: 51a98ea 9b682a1
+Author: luisca990 <34386325+luisca990@users.noreply.github.com>
+Date:   Sun Jul 28 09:14:05 2024 -0500
+
+    Merge pull request #8 from luisca990/lpaez
+    
+    Lpaez
+
+[33mcommit 03342efd3a8680a13261b7068d7927860dedfa4a[m
+Author: ErvidMolina89 <eralmoba@hotmail.com>
+Date:   Sun Jul 28 00:47:51 2024 -0500
+
+    Manejo de Warning
+
+[33mcommit 74b458fd915a98ad061901c4628966e9263499ad[m
+Author: ErvidMolina89 <eralmoba@hotmail.com>
+Date:   Sun Jul 28 00:46:32 2024 -0500
+
+    Manejo de Fecha minima de hoy en adelante
+
+[33mcommit 9b682a1cc904dda6744eb142ca39ce9271a88f7c[m
+Author: ErvidMolina89 <eralmoba@hotmail.com>
+Date:   Sun Jul 28 00:33:31 2024 -0500
+
+    Manejo dewarning
+
+[33mcommit 936e506d266fcfc5fe9ee92117e93f3cca56ac6c[m
+Author: ErvidMolina89 <eralmoba@hotmail.com>
+Date:   Sun Jul 28 00:30:10 2024 -0500
+
+    Manejo de sincronización de projects en firebase
+
+[33mcommit 51a98ea40812c4bda9e7bfc5564d831b920cd691[m
+Merge: c089074 de73729
+Author: luisca990 <34386325+luisca990@users.noreply.github.com>
+Date:   Fri Jul 26 14:27:01 2024 -0500
+
+    Merge pull request #7 from luisca990/aacosta
+    
+    Aacosta
+
+[33mcommit de737296538390c0e78297b136e72c8dd799049b[m
+Author: ErvidMolina89 <eralmoba@hotmail.com>
+Date:   Fri Jul 26 13:59:47 2024 -0500
+
+    manejo de dialogo de confirmación de eliminar y vizuales de botones
+
+[33mcommit 719f1cfc4f10b3f2e9ce8bc35173c5d7facf5e51[m
+Author: ErvidMolina89 <eralmoba@hotmail.com>
+Date:   Fri Jul 26 13:58:32 2024 -0500
+
+    manejo de dialogo de confirmación de eliminar y vizuales de botones
+
+[33mcommit c089074512ed8e9d4826ee69fb94c5e79de98658[m
+Merge: b924251 5e6ce7b
+Author: luisca990 <34386325+luisca990@users.noreply.github.com>
+Date:   Fri Jul 26 06:13:10 2024 -0500
+
+    Merge pull request #6 from luisca990/aacosta
+    
+    Aacosta
+
+[33mcommit b924251f89fd18ca4af78ceed27593a783e82a84[m
+Merge: 9ea6108 e2d6d12
+Author: luisca990 <34386325+luisca990@users.noreply.github.com>
+Date:   Fri Jul 26 06:12:55 2024 -0500
+
+    Merge pull request #5 from luisca990/lromero
+    
+    Lromero
+
+[33mcommit 5e6ce7b5b973eaefdfc4d9ef58135bc7a354194d[m
+Author: ErvidMolina89 <eralmoba@hotmail.com>
+Date:   Thu Jul 25 23:06:22 2024 -0500
+
+    manejo de warning
+
+[33mcommit cb60f0dfbe0d3e49168019637f45ba8571975245[m
+Author: ErvidMolina89 <eralmoba@hotmail.com>
+Date:   Thu Jul 25 23:05:35 2024 -0500
+
+    manejo de ocultar teclado
+
+[33mcommit 6b32ef7151b368b8ccd0f25bda9c2597a6c4537f[m
+Merge: 043224f e2d6d12
+Author: ErvidMolina89 <eralmoba@hotmail.com>
+Date:   Thu Jul 25 23:05:08 2024 -0500
+
+    Merge branch 'lromero' of https://github.com/luisca990/Reto2_Avanzado into aacosta
+
+[33mcommit 043224f44de7666b6f090e978fa5664032496bef[m
+Author: ErvidMolina89 <eralmoba@hotmail.com>
+Date:   Thu Jul 25 23:04:16 2024 -0500
+
+    manejo de ocultar teclado
+
+[33mcommit e2d6d12174ed7741abf66506788cdb447f15a53b[m
+Author: ErvidMolina89 <eralmoba@hotmail.com>
+Date:   Thu Jul 25 22:42:09 2024 -0500
+
+    Manejo de detalle, actualizar y delete de project
+
+[33mcommit 60013b5c7ec21023df9e5f8b3554459762e97457[m
+Author: ErvidMolina89 <eralmoba@hotmail.com>
+Date:   Thu Jul 25 21:46:39 2024 -0500
+
+    Manejo de permisos para obtener imagen de galeria, mejora del item del recycler del home
+
+[33mcommit 9ea6108161164bd490304abfcbe73b748137bae6[m
+Merge: 66d587a 38316de
+Author: luisca990 <34386325+luisca990@users.noreply.github.com>
+Date:   Wed Jul 24 23:01:04 2024 -0500
+
+    Merge pull request #4 from luisca990/emolina
+    
+    Emolina
+
+[33mcommit 38316dee5cad3747ca8542f0020f7df6b9efa124[m
+Author: ErvidMolina89 <eralmoba@hotmail.com>
+Date:   Wed Jul 24 22:56:16 2024 -0500
+
+    Eliminación de clases Innecesarias del projecto anterior y depuración en las demas clases y creacion del modelo project y su dao
+
+[33mcommit 9c3bf1b700b007b368526e55750fba30efe03b42[m
+Author: ErvidMolina89 <eralmoba@hotmail.com>
+Date:   Wed Jul 24 21:19:05 2024 -0500
+
+    Implementación de ViewBinding Para las visat de Login, registre y splash
+
+[33mcommit 66d587aa3e68cf093a4b66e1a9a47e495c1d5902[m
+Merge: 87b6189 9cce391
+Author: luisca990 <34386325+luisca990@users.noreply.github.com>
+Date:   Wed Jul 24 17:31:33 2024 -0500
+
+    Merge pull request #2 from luisca990/lromero
+    
+    Se actualiza el nombre del directorio raíz
+
+[33mcommit 9cce3912ced5ae8a637421c25a718d647c642eb3[m
+Author: Luis Romero <luisca990@gmail.com>
+Date:   Wed Jul 24 17:30:14 2024 -0500
+
+    Se actualiza el nombre del directorio raíz
+
+[33mcommit 87b618909bf44d5414496718d4eeca34978a12ca[m
+Merge: 04bde2f f6009a5
+Author: luisca990 <34386325+luisca990@users.noreply.github.com>
+Date:   Wed Jul 24 10:57:01 2024 -0500
+
+    Merge pull request #1 from luisca990/lromero
+    
+    Se cambia el nombre del paquete de la app a proyectate
+
+[33mcommit f6009a5e9d612ff52f59399db3e9047b6b9c2472[m
+Author: Luis Romero <luisca990@gmail.com>
+Date:   Wed Jul 24 10:55:23 2024 -0500
+
+    Se cambia el nombre del paquete de la app a proyectate
+
+[33mcommit 04bde2f52d8d6febbb9e599a29516d32e5526116[m
+Merge: 9f2a51c 7524301
+Author: luisca990 <34386325+luisca990@users.noreply.github.com>
+Date:   Wed Jul 17 23:10:00 2024 -0500
+
+    Merge pull request #25 from luisca990/lromero
+    
+    Se actualiza la versión del documento
+
+[33mcommit 752430181d5681880d377d9fe082151866d2ebd0[m
+Author: Luis Romero <luisca990@gmail.com>
+Date:   Wed Jul 17 23:08:04 2024 -0500
+
+    Se actualiza la versión del documento
+
+[33mcommit 9f2a51cbecf066ee14ce4e79d58f65a3a57dacf6[m
+Merge: 9d7d83e 99a6246
+Author: luisca990 <34386325+luisca990@users.noreply.github.com>
+Date:   Mon Jul 15 22:45:51 2024 -0500
+
+    Merge pull request #23 from luisca990/emolina
+    
+    Emolina
+
+[33mcommit 99a6246002f415c5e611954cc0ed8f1fcf2abaa4[m[33m ([m[1;31morigin/emolina[m[33m)[m
+Author: ErvidMolina89 <eralmoba@hotmail.com>
+Date:   Mon Jul 15 22:44:23 2024 -0500
+
+    manejo variable static
+
+[33mcommit 0f17293ed7aea4684a4682414fef2ceffc5c9411[m
+Author: ErvidMolina89 <eralmoba@hotmail.com>
+Date:   Mon Jul 15 22:42:57 2024 -0500
+
+    Mejora flujo de actualizar producto como admin
+
+[33mcommit 9d7d83eb42d682b8933b02d6aa949cfdc6096e74[m
+Merge: f36ca4c f3e7558
+Author: luisca990 <34386325+luisca990@users.noreply.github.com>
+Date:   Mon Jul 15 20:16:12 2024 -0500
+
+    Merge pull request #21 from luisca990/emolina
+    
+    Emolina
+
+[33mcommit f3e75581ed50f0992bf8d996686fd3dc153485b2[m
+Merge: 012a4a1 f36ca4c
+Author: ErvidMolina89 <eralmoba@hotmail.com>
+Date:   Mon Jul 15 20:08:05 2024 -0500
+
+    Merge branch 'develop' of https://github.com/luisca990/Reto_Avanzado into emolina
+
+[33mcommit 012a4a1017c7b4b0d15b249e75d44d856e51d536[m
+Author: ErvidMolina89 <eralmoba@hotmail.com>
+Date:   Mon Jul 15 20:06:10 2024 -0500
+
+    Manejo de warning
+
+[33mcommit 444a929f04a471a77adf1519d86e518da414e460[m
+Author: ErvidMolina89 <eralmoba@hotmail.com>
+Date:   Mon Jul 15 20:02:21 2024 -0500
+
+    Manejo de cantidad de producto
+
+[33mcommit f36ca4c38488de78fa4cd9b38a466638b52fd913[m
+Merge: b21f798 d5d93d4
+Author: luisca990 <34386325+luisca990@users.noreply.github.com>
+Date:   Mon Jul 15 18:33:52 2024 -0500
+
+    Merge pull request #19 from luisca990/lromero
+    
+    Lromero
+
+[33mcommit d5d93d44a26e31e41d64fda1f49e7b52df81e9bd[m
+Author: Luis Romero <luisca990@gmail.com>
+Date:   Mon Jul 15 18:32:34 2024 -0500
+
+    Se actualiza el APK con la última versión
+
+[33mcommit 48e918742eb6154b5d320505007179be10fecccb[m
+Author: Luis Romero <luisca990@gmail.com>
+Date:   Mon Jul 15 18:30:42 2024 -0500
+
+    Se agrega el manual del usuario
+
+[33mcommit b21f7989a4cbaa9e3a2e1a38445cf00929eb9030[m
+Merge: 121d691 6b5c635
+Author: luisca990 <34386325+luisca990@users.noreply.github.com>
+Date:   Mon Jul 15 15:59:21 2024 -0500
+
+    Merge pull request #18 from luisca990/lromero
+    
+    Se ajusta error tipográfico
+
+[33mcommit 6b5c635cd95df39a0b5f642a904f99037e434338[m
+Author: Luis Romero <luisca990@gmail.com>
+Date:   Mon Jul 15 15:57:53 2024 -0500
+
+    Se ajusta error tipográfico
+
+[33mcommit 121d6911581c49c13685a74280a003a62d745a86[m
+Merge: 42084a3 2376c79
+Author: luisca990 <34386325+luisca990@users.noreply.github.com>
+Date:   Mon Jul 15 10:38:27 2024 -0500
+
+    Merge pull request #17 from luisca990/emolina
+    
+    Emolina
+
+[33mcommit 2376c791e074b280bf1b58058f6cc36a602ceedb[m
+Author: ErvidMolina89 <eralmoba@hotmail.com>
+Date:   Mon Jul 15 10:32:28 2024 -0500
+
+    Corrección de warning
+
+[33mcommit c56b3ccafa54ab759698755379ffae46297fb8b5[m
+Author: ErvidMolina89 <eralmoba@hotmail.com>
+Date:   Mon Jul 15 10:26:08 2024 -0500
+
+    Corrección de warning null de Product
+
+[33mcommit 037148bfea43277938700786546c7fc4e9cd18f8[m
+Author: ErvidMolina89 <eralmoba@hotmail.com>
+Date:   Mon Jul 15 10:16:21 2024 -0500
+
+    Corrección de warning
+
+[33mcommit e3ca2559e1250ccf7e4c18edf477b160c477b222[m
+Author: ErvidMolina89 <eralmoba@hotmail.com>
+Date:   Mon Jul 15 10:15:01 2024 -0500
+
+    Corrección de warning
+
+[33mcommit dd1b29d012714cb43463a70b2279b14a0b5f9026[m
+Author: ErvidMolina89 <eralmoba@hotmail.com>
+Date:   Mon Jul 15 10:07:35 2024 -0500
+
+    Corrección error admin add productos, mejora de oped close baase de datos y validación de produclist en adapter de historial
+
+[33mcommit 42084a36732a8bd06036118637ca2d9953ff4355[m
+Merge: 2b18d31 5917a04
+Author: luisca990 <34386325+luisca990@users.noreply.github.com>
+Date:   Mon Jul 15 00:48:03 2024 -0500
+
+    Merge pull request #15 from luisca990/lromero
+    
+    Lromero
+
+[33mcommit 5917a04614ed38a9cbc31c54d6dda6d7b150e9e0[m
+Author: Luis Romero <luisca990@gmail.com>
+Date:   Mon Jul 15 00:47:26 2024 -0500
+
+    Se agrega el APK
+
+[33mcommit 937ba9b018df7729f182d2d5c920a04535a88f33[m
+Author: Luis Romero <luisca990@gmail.com>
+Date:   Mon Jul 15 00:45:17 2024 -0500
+
+    Se agrega el documento y la APK
+
+[33mcommit 2b18d31c947e49cd7f2b06ed85a3cd6dba5983c2[m
+Merge: c9e56e8 736d6b9
+Author: luisca990 <34386325+luisca990@users.noreply.github.com>
+Date:   Mon Jul 15 00:29:32 2024 -0500
+
+    Merge pull request #13 from luisca990/emolina
+    
+    Emolina
+
+[33mcommit 736d6b9d0b30ebde3af7c33fcbd6e752af3b36d5[m
+Merge: ed50ac3 c9e56e8
+Author: ErvidMolina89 <eralmoba@hotmail.com>
+Date:   Sun Jul 14 21:20:18 2024 -0500
+
+    Merge branch 'develop' of https://github.com/luisca990/Reto_Avanzado into emolina
+
+[33mcommit ed50ac3bbb3cad52da0f9b72af4c018b88c78ab1[m
+Author: ErvidMolina89 <eralmoba@hotmail.com>
+Date:   Sun Jul 14 21:19:48 2024 -0500
+
+    Manejo de error al elminar dos productos de shopping
+
+[33mcommit c9e56e804c8ce01d4205e316389394965e31a574[m
+Merge: 2d75503 21c4a56
+Author: luisca990 <34386325+luisca990@users.noreply.github.com>
+Date:   Sun Jul 14 10:46:50 2024 -0500
+
+    Merge pull request #12 from luisca990/lromero
+    
+    Lromero
+
+[33mcommit 21c4a5607240423a26f1b33e5283d5241d8e64a0[m
+Author: Luis Romero <luisca990@gmail.com>
+Date:   Sun Jul 14 10:45:35 2024 -0500
+
+    Se agrega la carpeta donde se va a alojar la apk de la aplicación
+
+[33mcommit d03eb20f700b16d13211481780849d910bfde222[m
+Author: Luis Romero <luisca990@gmail.com>
+Date:   Sun Jul 14 10:43:50 2024 -0500
+
+    Se ajusta el readme con los integrantes del proyecto
+
+[33mcommit 2d755037916403fae9e3feb653e3933772ed2ac9[m
+Merge: e06de0c 5088b84
+Author: luisca990 <34386325+luisca990@users.noreply.github.com>
+Date:   Sun Jul 14 10:02:09 2024 -0500
+
+    Merge pull request #11 from luisca990/lromero
+    
+    Lromero
+
+[33mcommit 5088b841138330c390d638a390101f7a93f0db62[m
+Author: Luis Romero <luisca990@gmail.com>
+Date:   Sun Jul 14 10:00:01 2024 -0500
+
+    Se agrega la carpeta documentación, allí va a estar el documento y demás que soportan la aplicación
+
+[33mcommit 43d9f62685e45acaae8fc8fe1385a7b2153c99b7[m
+Merge: 101e24b e06de0c
+Author: Luis Romero <luisca990@gmail.com>
+Date:   Sun Jul 14 09:48:23 2024 -0500
+
+    Merge branch 'develop' of https://github.com/luisca990/Reto_Avanzado into lromero
+
+[33mcommit e06de0ccfc3c82f4b586443a64ca8575806cfd95[m
+Merge: 5c0f2fd ecf1f11
+Author: luisca990 <34386325+luisca990@users.noreply.github.com>
+Date:   Sun Jul 14 09:47:09 2024 -0500
+
+    Merge pull request #10 from luisca990/emolina
+    
+    Manejo del carro de compras y historial de pedidos
+
+[33mcommit ecf1f11bfebce5de9f299ed7387c1c9f57a25ade[m
+Author: ErvidMolina89 <eralmoba@hotmail.com>
+Date:   Sun Jul 14 09:27:36 2024 -0500
+
+    Manejo de pedido abrierto por usuarioId logueado
+
+[33mcommit 3470b05f2b068a2f25f6bcc2ed0c923bd7725e61[m
+Author: ErvidMolina89 <eralmoba@hotmail.com>
+Date:   Sun Jul 14 02:23:11 2024 -0500
+
+    Manejo del carro de compras y historial de pedidos
+
+[33mcommit 101e24b04dbe3ef2935ae97f99d3c1d5f998fa0d[m
+Merge: 4ade687 5c0f2fd
+Author: Luis Romero <luisca990@gmail.com>
+Date:   Sat Jul 13 10:19:31 2024 -0500
+
+    Merge branch 'develop' of https://github.com/luisca990/Reto_Avanzado into lromero
+
+[33mcommit 5c0f2fdc1bb2529cabdd2dd1532b1239088dc783[m
+Merge: 6927676 0f87610
+Author: luisca990 <34386325+luisca990@users.noreply.github.com>
+Date:   Sat Jul 13 10:14:37 2024 -0500
+
+    Merge pull request #9 from luisca990/emolina
+    
+    Emolina
+
+[33mcommit 0f87610b2195e540f35348c38d5fd805c6480077[m
+Author: ErvidMolina89 <eralmoba@hotmail.com>
+Date:   Sat Jul 13 10:13:31 2024 -0500
+
+    Manejo de creación de pedido y detalle de pedido
+
+[33mcommit 616a413cf3e9e634128ce009ca0b250da013fbed[m
+Author: ErvidMolina89 <eralmoba@hotmail.com>
+Date:   Fri Jul 12 00:30:34 2024 -0500
+
+    Manejo de boton compra admin
+
+[33mcommit 81164af46d06cbaf6d853b554f9a0020d3cfff64[m
+Author: ErvidMolina89 <eralmoba@hotmail.com>
+Date:   Fri Jul 12 00:26:13 2024 -0500
+
+    Correcion null id
+
+[33mcommit 4ade687595ce094aaa7993c263105810bd6be90a[m
+Merge: 7c37309 1590394
+Author: Luis Romero <luisca990@gmail.com>
+Date:   Fri Jul 12 00:16:25 2024 -0500
+
+    Merge branch 'emolina' of https://github.com/luisca990/Reto_Avanzado into lromero
+
+[33mcommit 15903944dac95a725b23bdafd484c04d6f99520b[m
+Author: ErvidMolina89 <eralmoba@hotmail.com>
+Date:   Fri Jul 12 00:12:58 2024 -0500
+
+    Correcion search view por editext error visual
+
+[33mcommit 2ac91c71a430052ec6eda061cdaba273b964e532[m
+Author: ErvidMolina89 <eralmoba@hotmail.com>
+Date:   Fri Jul 12 00:02:02 2024 -0500
+
+    Navegación Delete
+
+[33mcommit 7c37309b91ab2e04d6b041a7f5eb9ed00000ea14[m
+Merge: 6be7105 42edaaf
+Author: Luis Romero <luisca990@gmail.com>
+Date:   Thu Jul 11 23:56:42 2024 -0500
+
+    Merge branch 'emolina' of https://github.com/luisca990/Reto_Avanzado into lromero
+
+[33mcommit 42edaaf3fc73b6253eaade3705da36190dde4a08[m
+Author: ErvidMolina89 <eralmoba@hotmail.com>
+Date:   Thu Jul 11 23:55:48 2024 -0500
+
+    manejo de eliminar un producto arquitectura mvp
+
+[33mcommit 6be7105c1a971c8ecfe140cc0ef1c26daab45c9b[m
+Merge: 6927676 38980a6
+Author: Luis Romero <luisca990@gmail.com>
+Date:   Thu Jul 11 23:40:02 2024 -0500
+
+    Merge branch 'emolina' of https://github.com/luisca990/Reto_Avanzado into lromero
+
+[33mcommit 38980a6795e5972191e59ce3ed3de0cfa1ee58e1[m
+Author: ErvidMolina89 <eralmoba@hotmail.com>
+Date:   Thu Jul 11 23:38:23 2024 -0500
+
+    manejo de eliminar un producto
+
+[33mcommit 6927676d72113e777850fcdf469b33a4f5bf6709[m
+Merge: 34cdbe3 91fabcd
+Author: luisca990 <34386325+luisca990@users.noreply.github.com>
+Date:   Thu Jul 11 23:10:06 2024 -0500
+
+    Merge pull request #8 from luisca990/emolina
+    
+    Creación de vista AddUpdateFragment que realiza la insercción y actua…
+
+[33mcommit 91fabcd22468e98fb29c208f578b78a532f290f5[m
+Author: ErvidMolina89 <eralmoba@hotmail.com>
+Date:   Thu Jul 11 23:06:54 2024 -0500
+
+    Creación de vista AddUpdateFragment que realiza la insercción y actualización de productos. con patron MVP. Tambien manejo de rol admin y client
+
+[33mcommit 34cdbe3fa976d09aecd45e121d8e42ef34836378[m
+Merge: 705f6b1 30784a4
+Author: LuzPaez <95242204+LuzPaez@users.noreply.github.com>
+Date:   Wed Jul 10 22:41:31 2024 -0500
+
+    Merge pull request #7 from luisca990/aacosta
+    
+    Aacosta
+
+[33mcommit 30784a48b70d3d8e7926428bf58181fe16906dbb[m[33m ([m[1;31morigin/aacosta[m[33m)[m
+Author: ErvidMolina89 <eralmoba@hotmail.com>
+Date:   Wed Jul 10 22:33:08 2024 -0500
+
+    Creacion de vista detalle cliente
+
+[33mcommit fea9cf0f84be086a771894ec304211383c132f09[m
+Author: ErvidMolina89 <eralmoba@hotmail.com>
+Date:   Wed Jul 10 16:12:34 2024 -0500
+
+    Creacion de vista detalle admin y agregar producto
+
+[33mcommit 705f6b15f2d551f381329621da2df546f685e461[m[33m ([m[1;31morigin/mariza[m[33m)[m
+Merge: e4d9696 e52cb67
+Author: luisca990 <34386325+luisca990@users.noreply.github.com>
+Date:   Tue Jul 9 23:38:59 2024 -0500
+
+    Merge pull request #6 from luisca990/lromero
+    
+    Lromero
+
+[33mcommit e52cb6764602aac34fc44a1f7cf336a9a6134509[m
+Author: ErvidMolina89 <eralmoba@hotmail.com>
+Date:   Tue Jul 9 23:34:32 2024 -0500
+
+    Manejo y Creación del usuario en base de datos y los productos por defecto y su vizualización. El manejo de sharepreferences y su logout
+
+[33mcommit 9b49cea8dba5e86ca41311d76679470d14fe1481[m
+Author: ErvidMolina89 <eralmoba@hotmail.com>
+Date:   Tue Jul 9 11:30:22 2024 -0500
+
+    Creación de la base de datos inicial, cambio de backgroud
+
+[33mcommit e4d969691a9d6903307f8a8125080c127555609d[m
+Merge: 8b8c671 7dbec88
+Author: luisca990 <34386325+luisca990@users.noreply.github.com>
+Date:   Tue Jul 9 08:24:17 2024 -0500
+
+    Merge pull request #4 from luisca990/mariza
+    
+    Mariza
+
+[33mcommit 8b8c671d31699b136693e6952dac931c3099b94e[m
+Merge: b15dc38 f3816d2
+Author: luisca990 <34386325+luisca990@users.noreply.github.com>
+Date:   Tue Jul 9 08:23:45 2024 -0500
+
+    Merge pull request #3 from luisca990/lpaez
+    
+    Lpaez
+
+[33mcommit 7dbec8839d5e24bc2ec685547b8703b33f3509a2[m
+Author: ErvidMolina89 <eralmoba@hotmail.com>
+Date:   Tue Jul 9 01:15:43 2024 -0500
+
+    Rediseño de la vista de registrar un usuario
+
+[33mcommit f3816d2db26ce6f3ad27bd8a68c2c705d17cd5c2[m[33m ([m[1;31morigin/lpaez[m[33m)[m
+Author: ErvidMolina89 <eralmoba@hotmail.com>
+Date:   Tue Jul 9 00:54:03 2024 -0500
+
+    Manejo de recycler en Home
+
+[33mcommit 34f2007e40d5d96bad9b0d5ac9e2bfaf9fd5a445[m
+Author: ErvidMolina89 <eralmoba@hotmail.com>
+Date:   Tue Jul 9 00:50:40 2024 -0500
+
+    ReDiseño de la vista de login
+
+[33mcommit c5e9c9096d00c6021d80b11aaab8c5284308eae9[m
+Merge: bfd2bdd b15dc38
+Author: ErvidMolina89 <eralmoba@hotmail.com>
+Date:   Tue Jul 9 00:06:18 2024 -0500
+
+    Merge branch 'develop' of https://github.com/luisca990/Reto_Avanzado into lpaez
+    
+    # Conflicts:
+    #       PanAppetit/gradle/libs.versions.toml
+
+[33mcommit bfd2bdded490c843045be873a3b70046631bcd76[m
+Author: ErvidMolina89 <eralmoba@hotmail.com>
+Date:   Tue Jul 9 00:05:31 2024 -0500
+
+    Creación inicial de home listando productos
+
+[33mcommit b15dc3854643ea475f27028cf2ce15692bea9262[m
+Merge: 848e5ce 5744f79
+Author: luisca990 <34386325+luisca990@users.noreply.github.com>
+Date:   Mon Jul 8 20:24:19 2024 -0500
+
+    Merge pull request #2 from luisca990/emolina
+    
+    Emolina
+
+[33mcommit 5744f7903cbb0bbecb886e4258f99e64b902863a[m
+Author: ErvidMolina89 <eralmoba@hotmail.com>
+Date:   Sat Jul 6 13:32:00 2024 -0500
+
+    Creación de fragmentHome
+
+[33mcommit 74e8e7e2939fbadc5c27b534c0b5c76e7bdb87d0[m
+Author: ErvidMolina89 <eralmoba@hotmail.com>
+Date:   Sat Jul 6 13:03:14 2024 -0500
+
+    Aplicación de arquitectura MVP y consumo de Firebase Registro de usuario
+
+[33mcommit b9b88cac54b036311bdcadbef9f41c9b938828a2[m
+Author: ErvidMolina89 <eralmoba@hotmail.com>
+Date:   Sat Jul 6 12:23:24 2024 -0500
+
+    Aplicación de arquitectura MVP y consumo de Firebase Login
+
+[33mcommit 4a76681557214fb6d7e9906a1159aa06809e53f6[m
+Author: ErvidMolina89 <eralmoba@hotmail.com>
+Date:   Sat Jul 6 11:20:08 2024 -0500
+
+    Creacion de vista de registro de usuario
+
+[33mcommit 3c17539a26b44a1c3b05836899c811d94dc84d30[m
+Author: ErvidMolina89 <eralmoba@hotmail.com>
+Date:   Sat Jul 6 10:59:44 2024 -0500
+
+    Creacion de usuario y manejo vista de Login
+
+[33mcommit 752c8116a74bc79f6f47afd9d190c496662759f6[m
+Author: ErvidMolina89 <eralmoba@hotmail.com>
+Date:   Sat Jul 6 10:45:36 2024 -0500
+
+    Creacion de vista de Login
+
+[33mcommit 9b2c35cf13f99a5839a03cc146f5862bf1506c27[m
+Author: ErvidMolina89 <eralmoba@hotmail.com>
+Date:   Sat Jul 6 10:39:38 2024 -0500
+
+    Arreglos de warning
+
+[33mcommit 5a7ec166d471a4d5fd4e45e85307709a5a311103[m
+Author: ErvidMolina89 <eralmoba@hotmail.com>
+Date:   Sat Jul 6 10:28:35 2024 -0500
+
+    Creación de vista SplashFragment, Regis
+     y Login. Ademas configuraciones inicales
+
+[33mcommit 4304bd9769e9b9cdbf7a51703a2a67950087a475[m
+Merge: 3f4e419 848e5ce
+Author: ErvidMolina89 <eralmoba@hotmail.com>
+Date:   Sat Jul 6 08:38:57 2024 -0500
+
+    Merge branch 'develop' of https://github.com/luisca990/Reto_Avanzado into emolina
+
+[33mcommit 848e5ce8af7aea08a514de8d273b04479daf3f78[m
+Merge: 4b75654 183abc5
+Author: luisca990 <34386325+luisca990@users.noreply.github.com>
+Date:   Fri Jul 5 22:50:29 2024 -0500
+
+    Merge pull request #1 from luisca990/lromero
+    
+    Agrega servico de FireBase
+
+[33mcommit 183abc51a399c75b90b377a99c09364ebe9b8781[m
+Author: Luis Romero <luisca990@gmail.com>
+Date:   Fri Jul 5 22:49:00 2024 -0500
+
+    Se agrega el archivo de configuración de FireBase
+
+[33mcommit 723f381bd138aac2ec979356120cbd2ca55e7c48[m
+Author: Luis Romero <luisca990@gmail.com>
+Date:   Fri Jul 5 22:45:22 2024 -0500
+
+    Agrega archivo de configuración FireBase y dependencias
+
+[33mcommit 3f4e4193842695a862c0212e0147996aeb2135a8[m
+Author: ErvidMolina89 <eralmoba@hotmail.com>
+Date:   Fri Jul 5 22:43:57 2024 -0500
+
+    Informacion de Posible error compilación gradle solucion
+
+[33mcommit 62c2152dcee149b7862cddbe63fe50b8dc61bff1[m
+Author: ErvidMolina89 <eralmoba@hotmail.com>
+Date:   Fri Jul 5 22:43:37 2024 -0500
+
+    Informacion de Posible error compilación gradle solucion
+
+[33mcommit 4b7565491ead8e2cece216b1643f2aec5b12a41f[m
+Author: Luis Romero <luisca990@gmail.com>
+Date:   Fri Jul 5 18:00:10 2024 -0500
+
+    Plantilla
+
+[33mcommit a88d04c3f9406cc07c824048f0f69116dd817121[m
+Author: luisca990 <34386325+luisca990@users.noreply.github.com>
+Date:   Thu Jul 4 22:59:55 2024 -0500
+
+    Initial commit

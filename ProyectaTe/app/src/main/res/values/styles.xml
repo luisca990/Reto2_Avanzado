@@ -6,7 +6,7 @@
 
     <style name="EstilosEdtBtn" parent="Base.Widget.AppCompat.Button">
         <item name="android:width">285dp</item>git log
-        
+
         <item name="android:padding">0dp</item>
     </style>
 
